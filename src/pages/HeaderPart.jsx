@@ -13,10 +13,6 @@ const headerStyle = {
   backgroundColor: 'white',
 };
 
-const login = () => {
-  alert('login');
-};
-
 export default function HeaderPart() {
   return (
     <nav>
@@ -26,8 +22,9 @@ export default function HeaderPart() {
             <Col>
               <Link to="/">What I Read</Link>
             </Col>
-            <Col onClick={login}>
-              <Button type="text">log in</Button>
+            <Col>
+              <Button type="text">Join</Button>
+              <Button type="text">sign in</Button>
             </Col>
           </Row>
         </Header>
