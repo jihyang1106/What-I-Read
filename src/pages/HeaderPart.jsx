@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 import { Col, Row } from 'antd';
 import { Button } from 'antd';
+import SignIn from './SignIn';
 
 const { Header } = Layout;
 const headerStyle = {
@@ -24,7 +25,9 @@ export default function HeaderPart() {
             </Col>
             <Col>
               <Button type="text">Join</Button>
-              <Button type="text">sign in</Button>
+              <Button type="text">
+                <SignIn />
+              </Button>
             </Col>
           </Row>
         </Header>
