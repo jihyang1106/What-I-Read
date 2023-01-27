@@ -12,7 +12,11 @@ const Error = () => {
       <Result
         status="warning"
         title="There are some problems with your operation."
-        extra={<Button onClick={goToWeb}>Go to Website</Button>}
+        extra={
+          <Button type="text" onClick={goToWeb}>
+            Go to Website
+          </Button>
+        }
       />
     </>
   );
