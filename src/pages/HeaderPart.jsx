@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 import { Col, Row } from 'antd';
 import { Button } from 'antd';
-import SignIn from './SignIn';
+import { SignInModal } from '../components/Modal';
+import { useState } from 'react';
 
+/** Header CSS */
 const { Header } = Layout;
 const headerStyle = {
   color: 'black',
@@ -15,6 +17,12 @@ const headerStyle = {
 };
 
 export default function HeaderPart() {
+  /** 모달 창 state */
+  const [open, setOpen] = useState(false);
+  const changeOpen = (open) => {
+    setOpen(open);
+  };
+
   return (
     <nav>
       <Layout>
@@ -25,9 +33,17 @@ export default function HeaderPart() {
             </Col>
             <Col>
               <Button type="text">Join</Button>
-              <Button type="text">
-                <SignIn />
+              <Button
+                type="text"
+                onClick={() => {
+                  setOpen(true);
+                }}
+              >
+                SignIn
               </Button>
+              {open === true ? (
+                <SignInModal open={open} changeOpen={changeOpen} />
+              ) : null}
             </Col>
           </Row>
         </Header>

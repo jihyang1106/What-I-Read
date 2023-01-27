@@ -2,3 +2,7 @@ a,
 a:hover {
   color: black;
 }
+
+.login-form-forgot {
+  font-size: small;
+}
