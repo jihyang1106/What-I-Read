@@ -14,7 +14,6 @@ export function SignInModal({ open, changeOpen }) {
 
   /** 취소버튼, x 버튼 */
   const handleCancel = () => {
-    console.log(open);
     changeOpen(!open);
   };
 

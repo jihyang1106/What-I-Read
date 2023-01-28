@@ -6,17 +6,10 @@ import axios from 'axios';
 import { newListCreate, recentListCreate } from './../store/module/Book';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import '../css/main.css';
+import Search from '../components/Search';
 
 const { Content } = Layout;
-
-const contentStyle = {
-  textAlign: 'center',
-  height: '240px',
-  lineHeight: '200px',
-  color: '#fff',
-  backgroundColor: 'lightgray',
-  marginTop: '10px',
-};
 
 const Div = styled.div`
   display: flex;
@@ -52,7 +45,9 @@ export default function Main() {
   return (
     <>
       <HeaderPart />
-      <Content style={contentStyle}>Content</Content>
+      <Content className="contentStyle">
+        <Search />
+      </Content>
       <Content>
         <Div>
           {recentListState.map((el) => (
