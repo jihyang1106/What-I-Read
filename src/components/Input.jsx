@@ -27,7 +27,7 @@ export default function Search() {
           search();
         }}
       >
-        <Link to="/user">검색</Link>
+        <Link to="/searchList">검색</Link>
       </button>
     </div>
   );
