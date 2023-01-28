@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderPart from './HeaderPart';
+import HeaderPart from '../components/HeaderPart';
 import { Layout } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -17,6 +17,12 @@ const contentStyle = {
   backgroundColor: 'lightgray',
   marginTop: '10px',
 };
+
+const Div = styled.div`
+  display: flex;
+  justify-content: space-beween;
+  max-width: '1200px';
+`;
 
 export default function Main() {
   const Dispatch = useDispatch();
@@ -42,12 +48,6 @@ export default function Main() {
   useEffect(() => {
     MainPageBookListRender();
   }, []);
-
-  const Div = styled.div`
-    display: flex;
-    justify-content: space-beween;
-    max-width: '1200px';
-  `;
 
   return (
     <>
