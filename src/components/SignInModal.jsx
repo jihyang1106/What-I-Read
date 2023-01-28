@@ -1,7 +1,8 @@
 import React from 'react';
 import { Modal, Input, Form } from 'antd';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
-export function SignInModal({ open, changeOpen }) {
+export default function SignInModal({ open, changeOpen }) {
   /** form 리액트 훅 */
   const [form] = Form.useForm();
 
@@ -28,9 +29,9 @@ export function SignInModal({ open, changeOpen }) {
         onCancel={handleCancel}
       >
         <Form form={form} onFinish={handleSubmit}>
+          &nbsp;
           <Form.Item
             name="id"
-            label="ID"
             rules={[
               {
                 type: 'email',
@@ -42,11 +43,13 @@ export function SignInModal({ open, changeOpen }) {
               },
             ]}
           >
-            <Input placeholder="아이디를 입력해주세요" />
+            <Input
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder="아이디를 입력해주세요"
+            />
           </Form.Item>
           <Form.Item
             name="password"
-            label="Password"
             rules={[
               {
                 pattern: /^[a-zA-Z]+[0-9]+$/,
@@ -59,7 +62,10 @@ export function SignInModal({ open, changeOpen }) {
             ]}
             hasFeedback
           >
-            <Input placeholder="비밀번호를 입력해주세요" />
+            <Input.Password
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              placeholder="비밀번호를 입력해주세요"
+            />
           </Form.Item>
         </Form>
       </Modal>

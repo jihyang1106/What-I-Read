@@ -6,3 +6,7 @@ a:hover {
 .login-form-forgot {
   font-size: small;
 }
+
+body {
+  background-color: white;
+}
