@@ -1,5 +1,7 @@
 import React from 'react';
-import HeaderPart from '../components/HeaderPart';
+import BookModal from '../components/BookModal';
+import BookDetailModal from '../components/BookDetailModal';
+import { useState } from 'react';
 import { Layout, Col, Row, Button, Card } from 'antd';
 import '../css/searchList.css';
 
@@ -10,9 +12,19 @@ const contentStyle = {
   marginTop: '60px',
 };
 export default function SearchList() {
+  /** BookModal 모달 창 state */
+  const [open, setOpen] = useState(false);
+  const changeOpen = (open) => {
+    setOpen(open);
+  };
+  /** BookDetailModal */
+  const [isopen, setIsOpen] = useState(false);
+  const changeIsOpen = (isopen) => {
+    setIsOpen(isopen);
+  };
+
   return (
     <>
-      <HeaderPart />
       <Layout style={{ background: 'white' }}>
         <Content style={contentStyle}>
           <Row>
@@ -24,127 +36,36 @@ export default function SearchList() {
                       <img
                         alt="example"
                         src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                      />
-                    }
-                    onClick={(e) => {
-                      console.log('이미지버튼눌림');
-                    }}
-                  >
-                    <Meta
-                      title="Europe Street beat"
-                      description="www.instagram.com"
-                    />
-                    <div className="bookLog">
-                      <Button
-                        onClick={(event) => {
-                          console.log('기록버튼눌림');
-                          event.stopPropagation();
-                        }}
-                      >
-                        기록하기
-                      </Button>
-                    </div>
-                  </Card>
-                </Col>
-                <Col xs={24} sm={24} md={12} lg={8} xl={6} xxl={6}>
-                  <Card
-                    cover={
-                      <img
-                        alt="example"
-                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                      />
-                    }
-                  >
-                    <Meta
-                      title="Europe Street beat"
-                      description="www.instagram.com"
-                    />
-
-                    <div className="bookLog">
-                      <Button
                         onClick={() => {
-                          console.log('기록버튼눌림');
+                          changeIsOpen(true);
                         }}
-                      >
-                        기록하기
-                      </Button>
-                    </div>
-                  </Card>
-                </Col>
-                <Col xs={24} sm={24} md={12} lg={8} xl={6} xxl={6}>
-                  <Card
-                    cover={
-                      <img
-                        alt="example"
-                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
                       />
                     }
                   >
-                    <Meta
-                      title="Europe Street beat"
-                      description="www.instagram.com"
-                    />
-
-                    <div className="bookLog">
-                      <Button
-                        onClick={() => {
-                          console.log('기록버튼눌림');
-                        }}
-                      >
-                        기록하기
-                      </Button>
-                    </div>
-                  </Card>
-                </Col>
-                <Col xs={24} sm={24} md={12} lg={8} xl={6} xxl={6}>
-                  <Card
-                    cover={
-                      <img
-                        alt="example"
-                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                    {isopen === true ? (
+                      <BookDetailModal
+                        isopen={isopen}
+                        changeIsOpen={changeIsOpen}
                       />
-                    }
-                  >
+                    ) : null}
                     <Meta
-                      title="Europe Street beat"
-                      description="www.instagram.com"
+                      title="모두의 네트워크"
+                      description="초보자와 비전공자를 위한 가장 쉬운 네트워크 입문서 [모두의 네트워크]는 이제 막 네트워크를 공부하기 시작했거나 공부해야겠다고 마음먹은 초급자를 대상으로 한 입문서다."
                     />
-
-                    <div className="bookLog">
-                      <Button
-                        onClick={() => {
-                          console.log('기록버튼눌림');
-                        }}
-                      >
-                        기록하기
-                      </Button>
-                    </div>
                   </Card>
-                </Col>
-                <Col xs={24} sm={24} md={12} lg={8} xl={6} xxl={6}>
-                  <Card
-                    cover={
-                      <img
-                        alt="example"
-                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                      />
-                    }
-                  >
-                    <Meta
-                      title="Europe Street beat"
-                      description="www.instagram.com"
-                    />
-
-                    <div className="bookLog">
-                      <Button
-                        onClick={() => {
-                          console.log('기록버튼눌림');
-                        }}
-                      >
-                        기록하기
-                      </Button>
-                    </div>
-                  </Card>
+                  <div className="bookLog">
+                    <Button
+                      onClick={(event) => {
+                        changeOpen(true);
+                        event.stopPropagation();
+                      }}
+                    >
+                      기록하기
+                    </Button>
+                    {open === true ? (
+                      <BookModal open={open} changeOpen={changeOpen} />
+                    ) : null}
+                  </div>
                 </Col>
               </Row>
             </Col>
