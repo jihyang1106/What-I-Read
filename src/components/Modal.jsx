@@ -66,5 +66,3 @@ export function SignInModal({ open, changeOpen }) {
     </>
   );
 }
-
-export function JoinModal() {}
