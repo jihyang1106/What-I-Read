@@ -6,24 +6,24 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import './recentList.css';
+import './list.css';
 
 // import required modules
 import { Pagination } from 'swiper';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { recentListCreate } from '../store/module/Book';
+import { newListCreate } from '../store/module/Book';
 
 export default function RecentList() {
   const Dispatch = useDispatch();
-  const recentListState = useSelector((state) => state.Book.recentList);
+  const newListState = useSelector((state) => state.Book.newList);
 
   async function MainPageBookListRender() {
     await axios({
       method: 'get',
-      url: 'aladin/ttb/api/ItemList.aspx?QueryType=Bestseller&MaxResults=10&start=1&cover=MidBig&SearchTarget=Book&output=js&Version=20131101&ttbkey=ttb96tmdqh1639001',
+      url: 'aladin/ttb/api/ItemList.aspx?QueryType=ItemNewSpecial&MaxResults=5&start=1&cover=MidBig&SearchTarget=Book&output=js&Version=20131101&ttbkey=ttb96tmdqh1639001',
     }).then((data) => {
-      Dispatch(recentListCreate(data.data.item));
+      Dispatch(newListCreate(data.data.item));
     });
   }
 
@@ -32,12 +32,13 @@ export default function RecentList() {
   }, []);
 
   return (
-    <div style={{ maxWidth: '1500px', margin: '0 auto', padding: '0 30px' }}>
+    <div>
+      <h2>신간 도서</h2>
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
         breakpoints={{
-          640: {
+          440: {
             slidesPerView: 2,
             spaceBetween: 20,
           },
@@ -53,7 +54,7 @@ export default function RecentList() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {recentListState.map((el) => (
+        {newListState.map((el) => (
           <SwiperSlide key={el.itemId}>
             <img src={el.cover} alt="" />
             {/* <p>{el.title.split('-')[0]}</p> */}
