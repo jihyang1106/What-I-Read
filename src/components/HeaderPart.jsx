@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 import { Col, Row } from 'antd';
 import { Button } from 'antd';
-import { SignInModal } from '../components/Modal';
+import { SignInModal } from './Modal';
 import { useState } from 'react';
 
 /** Header CSS */
 const { Header } = Layout;
+
 const headerStyle = {
   color: 'black',
   height: 64,

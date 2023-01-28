@@ -12,7 +12,7 @@ export function SignInModal({ open, changeOpen }) {
     handleCancel();
   };
 
-  /** 취소  */
+  /** 취소버튼, x 버튼 */
   const handleCancel = () => {
     console.log(open);
     changeOpen(!open);
@@ -67,3 +67,5 @@ export function SignInModal({ open, changeOpen }) {
     </>
   );
 }
+
+export function JoinModal() {}
