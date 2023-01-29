@@ -1,39 +1,37 @@
 import React from 'react';
 import BookModal from '../components/BookModal';
 import BookDetailModal from '../components/BookDetailModal';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Layout, Col, Row, Button, Card } from 'antd';
 import '../css/searchList.css';
 import { useSelector } from 'react-redux';
 
-
 const { Content } = Layout;
 const { Meta } = Card;
-
 
 const contentStyle = {
   marginTop: '60px',
 };
 
-
 export default function SearchList() {
-  const searchList = useSelector((state) => state.Book.searchList)
+  const searchList = useSelector((state) => state.Book.searchList);
 
-  function bookRecord(book){
-    
-  }
+  // localStorage에 저장한 값 가져오기
+  const searchListStr = window.localStorage.getItem('searchListLocal');
+  const searchListLocal = JSON.parse(searchListStr); // JSON 문자열을 객체, 배열로 변환
+
+  function bookRecord(book) {}
 
   /** BookModal 모달 창 state */
   const [open, setOpen] = useState(false);
   const changeOpen = (open) => {
     setOpen(open);
   };
-  /** BookDetailModal */
+  /** BookDetailModal 모달 창 state */
   const [isopen, setIsOpen] = useState(false);
   const changeIsOpen = (isopen) => {
     setIsOpen(isopen);
   };
-
 
   return (
     <>
@@ -42,51 +40,53 @@ export default function SearchList() {
           <Row>
             <Col span={12} offset={6}>
               <Row gutter={[40, 24]}>
-                {searchList.map((el, i) => (
-                  <Col key={el.itemId} xs={24} sm={24} md={12} lg={8} xl={6} xxl={6}>
-                   <Card
-                     cover={
-                       <img
-                         alt="example"
-                         src={el.cover}
-                         onClick={() => {
-                           changeIsOpen(true);
-                         }}
-                       />
-                     }
-                   >
-                     <Meta
-                       title={el.title.split('-')[0]}
-                       description={el.description.slice(0,50)+'.....'}
-                     />
-                   </Card>
-                   <div className="bookLog">
-                     <Button
-                       onClick={(event) => {
-                         changeOpen(true);
-                         event.stopPropagation();
-                       }}
-                     >
-                       기록하기
-                     </Button>
-                   </div>
-                 </Col>
+                {searchListLocal.map((el, i) => (
+                  <Col
+                    key={el.itemId}
+                    xs={24}
+                    sm={24}
+                    md={12}
+                    lg={8}
+                    xl={6}
+                    xxl={6}
+                  >
+                    <Card
+                      cover={
+                        <img
+                          alt={el.title.split('-')[0]}
+                          src={el.cover}
+                          onClick={() => {
+                            changeIsOpen(true);
+                            console.log('el', el);
+                          }}
+                        />
+                      }
+                    >
+                      <Meta
+                        title={el.title.split('-')[0]}
+                        description={el.description.slice(0, 50) + '.....'}
+                      />
+                    </Card>
+                    <div className="bookLog">
+                      <Button
+                        onClick={(event) => {
+                          changeOpen(true);
+                        }}
+                      >
+                        기록하기
+                      </Button>
+                    </div>
+                  </Col>
                 ))}
-               
               </Row>
             </Col>
           </Row>
         </Content>
       </Layout>
-{isopen === true ? (
-        <BookDetailModal
-          isopen={isopen}
-          changeIsOpen={changeIsOpen}
-        />
+      {isopen === true ? (
+        <BookDetailModal isopen={isopen} changeIsOpen={changeIsOpen} />
       ) : null}
-{open === true ? (
-  <BookModal open={open} changeOpen={changeOpen} />
-) : null}
+      {open === true ? <BookModal open={open} changeOpen={changeOpen} /> : null}
     </>
   );
 }

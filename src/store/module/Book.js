@@ -1,13 +1,11 @@
 const initState = {
   bestcellerList: [],
   newList: [],
-  searchList: [],
 };
 
 //액션 타입 정의하기 : 승보
 const BESTCELLER = 'main/BESTCELLER';
 const NEWLIST = 'main/NEWLIST';
-const SEARCHLIST = 'main/SEARCHLIST';
 
 //액션 생성함수 작성 - reducer와 연결된 함수 : 승보
 export function bestcellerListCreate(payload) {
@@ -19,12 +17,6 @@ export function bestcellerListCreate(payload) {
 export function newListCreate(payload) {
   return {
     type: NEWLIST,
-    payload,
-  };
-}
-export function searchListCreate(payload) {
-  return {
-    type: SEARCHLIST,
     payload,
   };
 }
@@ -42,11 +34,7 @@ export default function book(state = initState, action) {
         ...state,
         newList: action.payload,
       };
-    case SEARCHLIST:
-      return {
-        ...state,
-        searchList: action.payload,
-      };
+
     default:
       return state;
   }
