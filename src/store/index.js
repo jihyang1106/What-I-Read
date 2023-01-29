@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import Book from './module/Book'
+import Book from './module/Book';
+import Search from './module/Search';
 
 export default combineReducers({
-  Book
+  Book,
+  Search,
 });

@@ -1,28 +1,26 @@
 import React from 'react';
 import { Modal, Input, Form, Select } from 'antd';
-import axios from 'axios'
+import axios from 'axios';
 const { Option } = Select;
-
 
 export default function JoinModal({ join, changeJoin }) {
   /** form 리액트 훅 */
   const [form] = Form.useForm();
 
   /** 폼 전송*/
-  const  handleSubmit = async (values) => {
+  const handleSubmit = async (values) => {
     console.log(values);
     const data = await axios({
       method: 'post',
-      url: "http://localhost:5000/auth/signup",
+      url: 'http://localhost:5000/auth/signup',
       data: values,
-    })
-    console.log(data)
-    if(data.data === true){
-      alert('회원가입성공!')
-      //헤더에서 state 변경
-      handleCancel();
+    });
+    console.log(data);
+    if (data.data === true) {
+      alert('회원가입성공!');
+      handleCancel(); //헤더에서 state 변경
     } else {
-      alert(data.data)
+      alert(data.data);
     }
   };
 
@@ -31,6 +29,7 @@ export default function JoinModal({ join, changeJoin }) {
     changeJoin(!join);
   };
 
+  /** phone 010부분(prefix) */
   const prefixSelector = (
     <Form.Item noStyle>
       <Select
@@ -66,22 +65,6 @@ export default function JoinModal({ join, changeJoin }) {
               {
                 required: true,
                 message: '아이디를 입력해주세요',
-              },
-            ]}
-          >
-            <Input placeholder="아이디를 입력해주세요" />
-          </Form.Item>
-          <Form.Item
-            name="nickname"
-            label="nickname"
-            rules={[
-              {
-                type: 'text',
-                //message: '이메일 형식으로 입력해주세요',
-              },
-              {
-                required: true,
-                message: '닉네임을 입력해주세요',
               },
             ]}
           >
@@ -125,6 +108,38 @@ export default function JoinModal({ join, changeJoin }) {
             ]}
           >
             <Input.Password />
+          </Form.Item>
+          <Form.Item
+            name="name"
+            label="name"
+            rules={[
+              {
+                required: true,
+                message: '이름을 입력해주세요',
+              },
+              {
+                pattern: /[a-z|A-Z|ㄱ-ㅎ|가-힣]/g,
+                message: '숫자를 제외한 텍스트만 입력해주세요',
+              },
+            ]}
+          >
+            <Input placeholder="이름을 입력해주세요" />
+          </Form.Item>
+          <Form.Item
+            name="nickname"
+            label="nickname"
+            rules={[
+              {
+                required: true,
+                message: '닉네임을 입력해주세요',
+              },
+              {
+                pattern: /[a-z|A-Z|ㄱ-ㅎ|가-힣]/g,
+                message: '숫자를 제외한 텍스트만 입력해주세요',
+              },
+            ]}
+          >
+            <Input placeholder="닉네임을 입력해주세요" />
           </Form.Item>
           <Form.Item
             name="phone"
