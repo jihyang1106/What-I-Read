@@ -18,8 +18,13 @@ class User extends Sequelize.Model {
                allowNull: false,
             },
             phone: {
-               type: Sequelize.INTEGER,
+               type: Sequelize.STRING(15),
                allowNull: true,
+            },
+            nickName: {
+               type: Sequelize.STRING(20),
+               allowNull: false,
+               unique: true,
             },
          },
          {  // 두번째 객체 인수는 테이블 자체에 대한 설정

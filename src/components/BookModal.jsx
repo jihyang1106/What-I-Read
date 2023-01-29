@@ -1,23 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Input, Form } from 'antd';
-
+import axios from 'axios'
 export default function BookModal({ open, changeOpen }) {
   /** form 리액트 훅 */
   const [form] = Form.useForm();
+
   /** TextArea */
   const [textarea, setTextArea] = useState('');
-
-  /** 폼 전송 */
-  const handleSubmit = (values) => {
-    console.log(values);
-    alert('기록완료!');
-    handleCancle();
-  };
-
+ 
+ 
   /**취소 버튼, x버튼 */
   const handleCancle = () => {
     changeOpen(!open);
   };
+
+
+  /** 폼 전송 */
+  const handleSubmit = async (values) => {
+    console.log(values);
+
+    const data = await axios({
+      method: 'post',
+      url: "http://localhost:5000/auth/login",
+      data: values,
+    })
+
+    console.log(data)
+
+    if(data){
+      alert('기록완료!')
+    } else {
+      alert('기록실패!')
+    }
+  };
+
+
 
   // form.setFieldsValue({
   //   title: '책제목',

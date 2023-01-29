@@ -1,15 +1,29 @@
 import React from 'react';
 import { Modal, Input, Form } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import axios from 'axios'
 
 export default function SignInModal({ open, changeOpen }) {
   /** form 리액트 훅 */
   const [form] = Form.useForm();
 
   /** 폼 전송*/
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     console.log(values);
-    alert('로그인성공!');
+    axios.defaults.withCredentials = true;
+    const data = await axios({
+      method: 'post',
+      url: "http://localhost:5000/auth/login",
+      data: values,
+    })
+    console.log(data)
+    if(data.data === true){
+      alert('로그인 성공!')
+      //헤더에서 state 변
+    } else {
+      console.log(data.data)
+      alert(data.data)
+    }
     handleCancel();
   };
 

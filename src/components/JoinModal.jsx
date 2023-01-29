@@ -1,16 +1,29 @@
 import React from 'react';
 import { Modal, Input, Form, Select } from 'antd';
+import axios from 'axios'
 const { Option } = Select;
+
 
 export default function JoinModal({ join, changeJoin }) {
   /** form 리액트 훅 */
   const [form] = Form.useForm();
 
   /** 폼 전송*/
-  const handleSubmit = (values) => {
+  const  handleSubmit = async (values) => {
     console.log(values);
-    alert('회원가입성공!');
-    handleCancel();
+    const data = await axios({
+      method: 'post',
+      url: "http://localhost:5000/auth/signup",
+      data: values,
+    })
+    console.log(data)
+    if(data.data === true){
+      alert('회원가입성공!')
+      //헤더에서 state 변경
+      handleCancel();
+    } else {
+      alert(data.data)
+    }
   };
 
   /** 취소버튼, x 버튼 */
@@ -53,6 +66,22 @@ export default function JoinModal({ join, changeJoin }) {
               {
                 required: true,
                 message: '아이디를 입력해주세요',
+              },
+            ]}
+          >
+            <Input placeholder="아이디를 입력해주세요" />
+          </Form.Item>
+          <Form.Item
+            name="nickname"
+            label="nickname"
+            rules={[
+              {
+                type: 'text',
+                //message: '이메일 형식으로 입력해주세요',
+              },
+              {
+                required: true,
+                message: '닉네임을 입력해주세요',
               },
             ]}
           >
