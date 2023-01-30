@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Modal, Input, Form } from 'antd';
 import axios from 'axios';
-export default function BookModal({ open, changeOpen }) {
+import { ConsoleSqlOutlined } from '@ant-design/icons';
+export default function BookModal({ open, changeOpen, bookInfo }) {
   /** form 리액트 훅 */
   const [form] = Form.useForm();
 
@@ -12,6 +13,9 @@ export default function BookModal({ open, changeOpen }) {
   const handleCancle = () => {
     changeOpen(!open);
   };
+
+  console.log(bookInfo.title);
+  const title = bookInfo.title;
 
   /** 폼 전송 */
   const handleSubmit = async (values) => {
@@ -51,8 +55,8 @@ export default function BookModal({ open, changeOpen }) {
           form={form}
           onFinish={handleSubmit}
           initialValues={{
-            title: '모두의 네트워크',
-            author: '미즈구치 카츠야',
+            title: bookInfo.title,
+            author: bookInfo.author,
           }}
         >
           <Form.Item name="title" label="제목">

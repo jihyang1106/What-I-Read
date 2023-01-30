@@ -14,7 +14,7 @@ const contentStyle = {
 };
 
 export default function SearchList() {
-  const searchList = useSelector((state) => state.Book.searchList);
+  // const searchList = useSelector((state) => state.Book.searchList);
 
   // localStorage에 저장한 값 가져오기
   const searchListStr = window.localStorage.getItem('searchListLocal');
@@ -33,12 +33,15 @@ export default function SearchList() {
     setIsOpen(isopen);
   };
 
+  const [bookInfo, setBookInfo] = useState('');
+
   return (
     <>
       <Layout style={{ background: 'white' }}>
         <Content style={contentStyle}>
           <Row>
             <Col span={12} offset={6}>
+              <div>{searchListLocal.length}개의 검색결과가 있습니다.</div>
               <Row gutter={[40, 24]}>
                 {searchListLocal.map((el, i) => (
                   <Col
@@ -57,7 +60,7 @@ export default function SearchList() {
                           src={el.cover}
                           onClick={() => {
                             changeIsOpen(true);
-                            console.log('el', el);
+                            setBookInfo(el);
                           }}
                         />
                       }
@@ -69,8 +72,9 @@ export default function SearchList() {
                     </Card>
                     <div className="bookLog">
                       <Button
-                        onClick={(event) => {
+                        onClick={() => {
                           changeOpen(true);
+                          setBookInfo(el);
                         }}
                       >
                         기록하기
@@ -84,9 +88,15 @@ export default function SearchList() {
         </Content>
       </Layout>
       {isopen === true ? (
-        <BookDetailModal isopen={isopen} changeIsOpen={changeIsOpen} />
+        <BookDetailModal
+          isopen={isopen}
+          changeIsOpen={changeIsOpen}
+          bookInfo={bookInfo}
+        />
       ) : null}
-      {open === true ? <BookModal open={open} changeOpen={changeOpen} /> : null}
+      {open === true ? (
+        <BookModal open={open} changeOpen={changeOpen} bookInfo={bookInfo} />
+      ) : null}
     </>
   );
 }
