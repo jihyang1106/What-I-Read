@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import HeaderPart from './components/HeaderPart';
 import User from './pages/User';
+import Post from './pages/Post';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/user" element={<User />} />
         <Route path="*" element={<Error />} />
         <Route path="/searchList" element={<SearchList />} />
+        <Route path="/post" element={<Post />} />
       </Routes>
     </div>
   );
