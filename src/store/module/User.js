@@ -15,7 +15,7 @@ export function userInfoCreate(payload) {
 }
 
 //리듀서 : 승보
-export default function book(state = initState, action) {
+export default function user(state = initState, action) {
   switch (action.type) {
     case USER_INFO:
       return { ...state, isLogin: true, userInfo: { ...action.payload } };

@@ -3,6 +3,7 @@ import { Modal, Input, Form } from 'antd';
 import axios from 'axios';
 import { ConsoleSqlOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
+
 export default function BookModal({ open, changeOpen, bookInfo }) {
   /** form 리액트 훅 */
   const [form] = Form.useForm();
@@ -16,13 +17,8 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
     changeOpen(!open);
   };
 
-  const title = bookInfo.title;
-
   /** 폼 전송 - bookInfo를 다 전달해주기 위해선 매개변수에 북인포를 전달해야해서 일단 함수를 리턴해줬다. 그 함수에 매개변수에 인풋밸류들을 넣어준다. */
   const handleSubmit = (bookInfo) => async (inputvalue) => {
-    console.log(bookInfo);
-    console.log(inputvalue);
-    console.log(id);
     const { author, categoryName, cover, link, title } = bookInfo;
     const { content } = inputvalue;
 

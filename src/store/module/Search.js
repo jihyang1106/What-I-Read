@@ -14,7 +14,7 @@ export function searchListCreate(payload) {
 }
 
 //리듀서 : 승보
-export default function book(state = initState, action) {
+export default function search(state = initState, action) {
   switch (action.type) {
     case SEARCHLIST:
       return {

@@ -9,23 +9,31 @@ export default function SignInModal({ open, changeOpen }) {
   /** form 리액트 훅 */
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+
   /** 폼 전송*/
   const handleSubmit = async (values) => {
-    console.log(values);
+    // console.log(values);
     axios.defaults.withCredentials = true;
+
     const data = await axios({
       method: 'post',
       url: 'http://localhost:5000/auth/login',
       data: values,
     });
     console.log(data);
+
     if (data.id) {
       console.log(data.data);
       dispatch(userInfoCreate(data.data));
       alert('로그인 성공!');
+      console.log('로그인 성공 data', data.data);
+      /**객체, 배열을 JSON 문자열로 변환 한뒤 세션 스토리지 저장*/
+      const dataJSON = JSON.stringify(data.data);
+      window.sessionStorage.setItem('세션dataJSON', dataJSON);
+
       //헤더에서 state 변
     } else {
-      console.log(data.data);
+      console.log('로그인 성공 실패', data.data);
       alert(data.data);
     }
     handleCancel();

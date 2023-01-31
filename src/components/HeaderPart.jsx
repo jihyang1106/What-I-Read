@@ -2,10 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 import { Col, Row } from 'antd';
-import { Button } from 'antd';
-import SignInModal from './SignInModal';
-import { useState } from 'react';
-import JoinModal from './JoinModal';
+import { useSelector } from 'react-redux';
+import HeaderDropdown from './HeaderDropdown';
+import HeaderButtons from './HeaderButtons';
 
 /** Header CSS */
 const { Header } = Layout;
@@ -19,17 +18,8 @@ const headerStyle = {
 };
 
 export default function HeaderPart() {
-  /** signIn 모달 창 state */
-  const [open, setOpen] = useState(false);
-  const changeOpen = (open) => {
-    setOpen(open);
-  };
-
-  /** join 모달 창 state */
-  const [join, setJoin] = useState(false);
-  const changeJoin = (join) => {
-    setJoin(join);
-  };
+  /** useSelector로 store에 있는 isLogin 가져오기 */
+  const isLogin = useSelector((state) => state.User.isLogin);
 
   return (
     <nav>
@@ -40,29 +30,7 @@ export default function HeaderPart() {
               <Link to="/">What I Read</Link>
             </Col>
             <Col>
-              <Button
-                type="text"
-                onClick={() => {
-                  setJoin(true);
-                  console.log('join 버튼');
-                }}
-              >
-                Join
-              </Button>
-              {join === true ? (
-                <JoinModal join={join} changeJoin={changeJoin} />
-              ) : null}
-              <Button
-                type="text"
-                onClick={() => {
-                  setOpen(true);
-                }}
-              >
-                SignIn
-              </Button>
-              {open === true ? (
-                <SignInModal open={open} changeOpen={changeOpen} />
-              ) : null}
+              {isLogin === true ? <HeaderDropdown /> : <HeaderButtons />}
             </Col>
           </Row>
         </Header>

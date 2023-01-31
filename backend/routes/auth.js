@@ -56,10 +56,10 @@ router.post('/login', (req, res, next) => {
     });
   })(req, res, next); //미들웨어 내에 미들웨어
 });
-router.get('/a', (req, res, next) => {
-  console.log(req.isAuthenticated());
-  console.log(req.user);
-  return res.send(true);
-});
 
+/**회원정보 수정 정보 가져오기 라우터 - 지향 */
+router.post('/selectInfo', (req, res, next) => {
+  const id = req.body;
+  console.log(id);
+});
 module.exports = router;
