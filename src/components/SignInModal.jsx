@@ -19,7 +19,7 @@ export default function SignInModal({ open, changeOpen }) {
       data: values,
     });
     console.log(data);
-    if (data.data) {
+    if (data.id) {
       console.log(data.data);
       dispatch(userInfoCreate(data.data));
       alert('로그인 성공!');

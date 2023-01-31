@@ -3,6 +3,7 @@ const env = process.env.NODE_ENV || 'development'; // 지정된 환경변수가 
 
 const User = require('./User');
 const BookReport = require('./BookReport');
+const Comment = require('./Comment');
 
 //데이터베이스 설정을 불러온다고 말할 수 있다.
 const config = require('../config/config.json')[env];
@@ -22,13 +23,16 @@ db.sequelize = sequelize;
 
 db.User = User;
 db.BookReport = BookReport;
+db.Comment = Comment;
 
 User.init(sequelize);
 BookReport.init(sequelize);
+Comment.init(sequelize);
 //init메서들 실행시켜 테이블 생성
 
 User.associate(db);
 BookReport.associate(db);
+Comment.associate(db);
 
 // 모듈로 꺼낸다.
 module.exports = db;

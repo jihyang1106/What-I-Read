@@ -6,7 +6,7 @@ const router = express.Router();
 /**회원가입 라우터 - 한승보 */
 router.post('/record', async (req, res, next) => {
   console.log(req.body);
-  const { author, categoryName, cover, link, title, content } = req.body;
+  const { author, categoryName, cover, link, title, content, id } = req.body;
 
   const record = await BookReport.create({
     author,
@@ -15,6 +15,7 @@ router.post('/record', async (req, res, next) => {
     link,
     title,
     content,
+    User_id: id,
   });
   //console.log(record);
   res.send(true);

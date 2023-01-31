@@ -18,7 +18,7 @@ export function userInfoCreate(payload) {
 export default function book(state = initState, action) {
   switch (action.type) {
     case USER_INFO:
-      return { ...state, isLogin: true, ...action.payload };
+      return { ...state, isLogin: true, userInfo: { ...action.payload } };
 
     default:
       return state;

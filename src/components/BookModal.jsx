@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Modal, Input, Form } from 'antd';
 import axios from 'axios';
 import { ConsoleSqlOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 export default function BookModal({ open, changeOpen, bookInfo }) {
   /** form 리액트 훅 */
   const [form] = Form.useForm();
+  const { id } = useSelector((state) => state.User.userInfo);
 
   /** TextArea */
   const [textarea, setTextArea] = useState('');
@@ -20,7 +22,7 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
   const handleSubmit = (bookInfo) => async (inputvalue) => {
     console.log(bookInfo);
     console.log(inputvalue);
-
+    console.log(id);
     const { author, categoryName, cover, link, title } = bookInfo;
     const { content } = inputvalue;
 
@@ -34,6 +36,7 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
         link,
         title,
         content,
+        id,
       },
     });
 
