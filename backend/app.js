@@ -42,7 +42,6 @@ app.use(express.urlencoded({ extended: false })); // uri 파싱
 
 const authRouter = require('./routes/auth');
 const bookRouter = require('./routes/book');
-const postRouter = require('./routes/post');
 
 app.use(
   session({
@@ -56,7 +55,6 @@ app.use(passport.session()); //deserializeUser호출 -> 실행되면 req객체�
 
 app.use('/auth', authRouter);
 app.use('/book', bookRouter);
-app.use('/post', postRouter);
 
 app.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기 중');
