@@ -15,11 +15,6 @@ export default function HeaderDropdown() {
   /** sessionStorage에 저장한 로그인 값 가져오기 */
   const sessionUserInfo = window.sessionStorage.getItem('sessionUserInfo');
   const userInfo = JSON.parse(sessionUserInfo); // JSON 문자열을 객체, 배열로 변환
-  console.log(userInfo);
-  /** redux에서 닉네임, id 가져오기 */
-  // const userName = useSelector((state) => state.User.nickName);
-  // const userId = useSelector((state) => state.User.id);
-  // console.log(userId);
 
   /** 회원정보 가져오기 */
   const selectUserInfo = async (userId) => {
@@ -89,7 +84,8 @@ export default function HeaderDropdown() {
       >
         <Button onClick={(e) => e.preventDefault()} type="text">
           <Space>
-            <span style={{ fontWeight: 'bold' }}>홍길동</span>님 안녕하세요 :)
+            <span style={{ fontWeight: 'bold' }}>{userInfo.nickName}</span>님
+            안녕하세요 :)
             <DownOutlined />
           </Space>
         </Button>
