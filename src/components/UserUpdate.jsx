@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Input, Form, Select } from 'antd';
 const { Option } = Select;
 
-export default function UserUpdate({ open, changeOpen }) {
+export default function UserUpdate({ open, changeOpen, userInfo }) {
   /** 취소버튼, x 버튼 */
   const handleCancel = () => {
     changeOpen(!open);
@@ -15,6 +15,10 @@ export default function UserUpdate({ open, changeOpen }) {
 
   /** form 리액트 훅 */
   const [form] = Form.useForm();
+
+  // props로 sessionStorage에 있는 회원정보 값 가져오기
+  const { id, pw, phone, nickName, name } = userInfo;
+  console.log('userInfo.id', id);
 
   /** phone 010부분(prefix) */
   const prefixSelector = (
@@ -34,7 +38,7 @@ export default function UserUpdate({ open, changeOpen }) {
       <Modal
         open={open}
         title="회원정보수정"
-        okText="수정"
+        okText="Update"
         cancelText="Cancel"
         onOk={form.submit}
         onCancel={handleCancel}
@@ -55,7 +59,7 @@ export default function UserUpdate({ open, changeOpen }) {
               },
             ]}
           >
-            <Input placeholder="아이디를 입력해주세요" />
+            <Input value={id} placeholder="아이디를 입력해주세요" />
           </Form.Item>
           <Form.Item
             name="password"

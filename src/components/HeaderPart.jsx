@@ -18,8 +18,9 @@ const headerStyle = {
 };
 
 export default function HeaderPart() {
-  /** useSelector로 store에 있는 isLogin 가져오기 */
-  const isLogin = useSelector((state) => state.User.isLogin);
+  /** sessionStorage에 저장한 로그인 값 가져오기 */
+  const userInfo = JSON.parse(window.sessionStorage.getItem('sessionUserInfo'));
+  // JSON 문자열을 객체, 배열로 변환
 
   return (
     <nav>
@@ -30,7 +31,11 @@ export default function HeaderPart() {
               <Link to="/">What I Read</Link>
             </Col>
             <Col>
-              {isLogin === true ? <HeaderDropdown /> : <HeaderButtons />}
+              {userInfo !== null ? (
+                <HeaderDropdown userInfo={userInfo} />
+              ) : (
+                <HeaderButtons />
+              )}
             </Col>
           </Row>
         </Header>
