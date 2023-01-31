@@ -18,6 +18,7 @@ const headerStyle = {
 };
 
 export default function HeaderPart() {
+
   /** useSelector로 store에 있는 isLogin 가져오기 */
   const user = useSelector((state) => state.User.userInfo);
 
@@ -25,7 +26,7 @@ export default function HeaderPart() {
   useEffect(() => {
     userInfoSet(JSON.parse(window.sessionStorage.getItem('sessionUserInfo')));
   }, [user]);
-
+  
   return (
     <nav>
       <Layout>
