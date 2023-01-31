@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 import { Col, Row } from 'antd';
@@ -19,7 +19,12 @@ const headerStyle = {
 
 export default function HeaderPart() {
   /** useSelector로 store에 있는 isLogin 가져오기 */
-  const isLogin = useSelector((state) => state.User.isLogin);
+  const user = useSelector((state) => state.User.userInfo);
+
+  const [userInfo, userInfoSet] = useState(user);
+  useEffect(() => {
+    userInfoSet(JSON.parse(window.sessionStorage.getItem('sessionUserInfo')));
+  }, [user]);
 
   return (
     <nav>
@@ -30,7 +35,7 @@ export default function HeaderPart() {
               <Link to="/">What I Read</Link>
             </Col>
             <Col>
-              {isLogin === true ? <HeaderDropdown /> : <HeaderButtons />}
+              {userInfo != null ? <HeaderDropdown /> : <HeaderButtons />}
             </Col>
           </Row>
         </Header>

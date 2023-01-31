@@ -53,7 +53,7 @@ const post = {
 async function recentPostRequest() {
   const data = await axios({
     method: 'post',
-    url: 'http://localhost:5000/post',
+    url: 'http://localhost:5000/book/recentRecordList',
   });
   console.log(data);
   return data;
@@ -145,7 +145,7 @@ export default function Post() {
             <Col xs={24} sm={24} lg={12}>
               {commentFormOpened.includes(el.id) && (
                 <div style={{ width: '100%' }}>
-                  <CommentForm Post_id={el.id} />
+                  <CommentForm BookReport_id={el.id} />
                   <CommentList comment={post.Comments} />
                 </div>
               )}
