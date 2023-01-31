@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { searchListCreate } from '../store/module/Search';
 
 export default function Search() {
