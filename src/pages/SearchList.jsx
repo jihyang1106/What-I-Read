@@ -20,8 +20,6 @@ export default function SearchList() {
   const searchListStr = window.localStorage.getItem('searchListLocal');
   const searchListLocal = JSON.parse(searchListStr); // JSON 문자열을 객체, 배열로 변환
 
-  function bookRecord(book) {}
-
   /** BookModal 모달 창 state */
   const [open, setOpen] = useState(false);
   const changeOpen = (open) => {

@@ -28,7 +28,7 @@ export default function SignInModal({ open, changeOpen }) {
       console.log('로그인 성공 data', data.data);
       /**객체, 배열을 JSON 문자열로 변환 한뒤 세션 스토리지 저장*/
       const dataJSON = JSON.stringify(data.data);
-      window.sessionStorage.setItem('세션dataJSON', dataJSON);
+      window.sessionStorage.setItem('sessionUserInfo', dataJSON);
 
       //헤더에서 state 변
     } else {
