@@ -50,7 +50,8 @@ router.post('/login', (req, res, next) => {
         console.error(loginError);
         return next(loginError);
       }
-      console.log(user);
+      console.log(user.dataValues);
+      delete user.dataValues.pw;
       return res.send(user);
     });
   })(req, res, next); //미들웨어 내에 미들웨어

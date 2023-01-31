@@ -63,6 +63,7 @@ export default function Post() {
   const [commentFormOpened, setCommentFormOpened] = useState([]);
   const [liked, setLiked] = useState(false);
   const { recentPost } = useSelector((state) => state.Post);
+  const { nickName } = useSelector((state) => state.User.userInfo);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -132,9 +133,9 @@ export default function Post() {
                 //extra={<FollowButton post={post} />}
               >
                 <Card.Meta
-                  avatar={<Avatar>{post.User.nickname}</Avatar>}
-                  title={post.User.nickname}
-                  description={post.content}
+                  avatar={<Avatar>{nickName}</Avatar>}
+                  title={nickName}
+                  description={el.content}
                 />
               </Card>
             </Col>
@@ -144,7 +145,7 @@ export default function Post() {
             <Col xs={24} sm={24} lg={12}>
               {commentFormOpened.includes(el.id) && (
                 <div style={{ width: '100%' }}>
-                  <CommentForm post={post} />
+                  <CommentForm Post_id={el.id} />
                   <CommentList comment={post.Comments} />
                 </div>
               )}

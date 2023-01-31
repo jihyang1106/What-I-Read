@@ -1,29 +1,13 @@
 const Sequelize = require('sequelize');
 
-class BookReport extends Sequelize.Model {
+class Comment extends Sequelize.Model {
   // 스태틱 메소드
   // 테이블에 대한 설정
   static init(sequelize) {
     return super.init(
       {
         // 첫번째 객체 인수는 테이블 필드에 대한 설정
-        title: {
-          type: Sequelize.STRING(100),
-          allowNull: false,
-        },
-        content: {
-          type: Sequelize.TEXT,
-          allowNull: false,
-        },
-        link: {
-          type: Sequelize.TEXT,
-          allowNull: false,
-        },
-        cover: {
-          type: Sequelize.TEXT,
-          allowNull: false,
-        },
-        categoryName: {
+        comment: {
           type: Sequelize.TEXT,
           allowNull: false,
         },
@@ -32,8 +16,8 @@ class BookReport extends Sequelize.Model {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: 'BookReport',
-        tableName: 'BookReport',
+        modelName: 'Comment',
+        tableName: 'Comment',
         freezeTableName: true,
         paranoid: false,
         charset: 'utf8',
@@ -45,13 +29,13 @@ class BookReport extends Sequelize.Model {
   // 다른 모델과의 관계
   static associate(db) {
     // 인자로 index.js에서 만든 여러 테이블이 저장되어있는 db객체를 받을 것이다.
-    db.BookReport.belongsTo(db.User, {
+    db.Comment.belongsTo(db.User, {
       foreignKey: 'User_id',
       sourceKey: 'id',
       onDelete: 'cascade',
       onUpdate: 'cascade',
     });
-    db.BookReport.hasMany(db.Comment, {
+    db.Comment.belongsTo(db.BookReport, {
       foreignKey: 'BookReport_id',
       sourceKey: 'id',
       onDelete: 'cascade',
@@ -60,4 +44,4 @@ class BookReport extends Sequelize.Model {
   }
 }
 
-module.exports = BookReport;
+module.exports = Comment;
