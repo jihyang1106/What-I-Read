@@ -4,7 +4,6 @@ import BookDetailModal from '../components/BookDetailModal';
 import { useState } from 'react';
 import { Layout, Col, Row, Button, Card } from 'antd';
 import '../css/searchList.css';
-import { useSelector } from 'react-redux';
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -14,8 +13,6 @@ const contentStyle = {
 };
 
 export default function SearchList() {
-  // const searchList = useSelector((state) => state.Book.searchList);
-
   // localStorage에 저장한 값 가져오기
   const searchListStr = window.localStorage.getItem('searchListLocal');
   const searchListLocal = JSON.parse(searchListStr); // JSON 문자열을 객체, 배열로 변환

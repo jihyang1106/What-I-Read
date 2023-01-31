@@ -18,15 +18,15 @@ const headerStyle = {
 };
 
 export default function HeaderPart() {
-
   /** useSelector로 store에 있는 isLogin 가져오기 */
   const user = useSelector((state) => state.User.userInfo);
 
+  /** 로그인 후 세션에 받아온 userInfo를 state에 넣기 */
   const [userInfo, userInfoSet] = useState(user);
   useEffect(() => {
     userInfoSet(JSON.parse(window.sessionStorage.getItem('sessionUserInfo')));
   }, [user]);
-  
+
   return (
     <nav>
       <Layout>
@@ -36,7 +36,11 @@ export default function HeaderPart() {
               <Link to="/">What I Read</Link>
             </Col>
             <Col>
-              {userInfo != null ? <HeaderDropdown /> : <HeaderButtons />}
+              {userInfo != null ? (
+                <HeaderDropdown userInfo={userInfo} />
+              ) : (
+                <HeaderButtons />
+              )}
             </Col>
           </Row>
         </Header>

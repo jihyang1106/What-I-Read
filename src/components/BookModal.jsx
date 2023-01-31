@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Input, Form } from 'antd';
 import axios from 'axios';
-import { ConsoleSqlOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 
 export default function BookModal({ open, changeOpen, bookInfo }) {

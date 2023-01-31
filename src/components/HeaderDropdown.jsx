@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, Dropdown, Space } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import UserUpdate from './UserUpdate';
-import axios from 'axios';
 
 export default function HeaderDropdown({ userInfo }) {
   /** UserUpdate 모달 창 state */
@@ -67,8 +66,7 @@ export default function HeaderDropdown({ userInfo }) {
       >
         <Button onClick={(e) => e.preventDefault()} type="text">
           <Space>
-            <span style={{ fontWeight: 'bold' }}>{userInfo.nickName}</span>님
-            안녕하세요 :)
+            <span style={{ fontWeight: 'bold' }}>홍길동</span>님 안녕하세요 :)
             <DownOutlined />
           </Space>
         </Button>
