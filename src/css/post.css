@@ -4,32 +4,38 @@ img + div {
   justify-content: space-between !important;
 }
 /* 스크롤바 설정*/
-img + div > div::-webkit-scrollbar{
+img + div > div::-webkit-scrollbar {
   width: 10px;
 }
 
 /* 스크롤바 막대 설정*/
-img + div > div::-webkit-scrollbar-thumb{
+img + div > div::-webkit-scrollbar-thumb {
   background-color: rgb(168, 223, 224);
   /* 스크롤바 둥글게 설정    */
-  border-radius: 10px;    
+  border-radius: 10px;
 }
 
 /* 스크롤바 뒷 배경 설정*/
-img + div > div::-webkit-scrollbar-track{
-  background-color: rgba(0,0,0,0);
+img + div > div::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
 }
 
 img + div > div {
-  overflow-y: scroll;;
+  overflow-y: scroll;
 }
-@media (max-width: 600px){
+img {
+  width: 20vw;
+}
+img + div {
+  width: 40vw;
+}
+@media (max-width: 992px) {
   img {
-    width: 50vw;
-    height: 65vw;
+    width: 40vw;
+    height: 40vw;
   }
   img + div {
-    width: 50vw;
-    height: 65vw;
+    width: 60vw;
+    height: 40vw;
   }
 }

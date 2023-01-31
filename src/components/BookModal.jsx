@@ -14,17 +14,27 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
     changeOpen(!open);
   };
 
-  console.log(bookInfo.title);
   const title = bookInfo.title;
 
-  /** 폼 전송 */
-  const handleSubmit = async (values) => {
-    console.log(values);
+  /** 폼 전송 - bookInfo를 다 전달해주기 위해선 매개변수에 북인포를 전달해야해서 일단 함수를 리턴해줬다. 그 함수에 매개변수에 인풋밸류들을 넣어준다. */
+  const handleSubmit = (bookInfo) => async (inputvalue) => {
+    console.log(bookInfo);
+    console.log(inputvalue);
+
+    const { author, categoryName, cover, link, title } = bookInfo;
+    const { content } = inputvalue;
 
     const data = await axios({
       method: 'post',
-      url: 'http://localhost:5000/auth/login',
-      data: values,
+      url: 'http://localhost:5000/book/record',
+      data: {
+        author,
+        categoryName,
+        cover,
+        link,
+        title,
+        content,
+      },
     });
 
     console.log(data);
@@ -53,7 +63,7 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
         <hr />
         <Form
           form={form}
-          onFinish={handleSubmit}
+          onFinish={handleSubmit(bookInfo)}
           initialValues={{
             title: bookInfo.title,
             author: bookInfo.author,
