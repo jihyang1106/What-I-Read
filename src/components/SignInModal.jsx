@@ -12,7 +12,7 @@ export default function SignInModal({ open, changeOpen }) {
 
   /** 폼 전송*/
   const handleSubmit = async (values) => {
-    // console.log(values);
+    console.log(values);
     axios.defaults.withCredentials = true;
 
     const data = await axios({

@@ -37,6 +37,7 @@ router.post('/signup', async (req, res, next) => {
 /**로그인 라우터 -한승보 */
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (authError, user, info) => {
+    console.log('req.body', req.body);
     if (authError) {
       console.error(authError);
       return next(authError);

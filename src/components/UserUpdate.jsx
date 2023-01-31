@@ -17,8 +17,7 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
   const [form] = Form.useForm();
 
   // props로 sessionStorage에 있는 회원정보 값 가져오기
-  const { id, pw, phone, nickName, name } = userInfo;
-  console.log('userInfo.id', id);
+  // const { id, pw, phone, nickName, name } = userInfo;
 
   /** phone 010부분(prefix) */
   const prefixSelector = (
@@ -43,7 +42,14 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
         onOk={form.submit}
         onCancel={handleCancel}
       >
-        <Form form={form} onFinish={handleSubmit}>
+        <Form
+          form={form}
+          onFinish={handleSubmit}
+          initialValues={{
+            id: userInfo.id,
+            Password: userInfo.pw,
+          }}
+        >
           &nbsp;
           <Form.Item
             name="id"
@@ -59,7 +65,7 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
               },
             ]}
           >
-            <Input value={id} placeholder="아이디를 입력해주세요" />
+            <Input placeholder="아이디를 입력해주세요" readOnly />
           </Form.Item>
           <Form.Item
             name="password"
