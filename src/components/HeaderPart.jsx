@@ -52,11 +52,7 @@ export default function HeaderPart() {
             </Col>
             <Col>
 
-              {userInfo != null ? (
-                <HeaderDropdown userInfo={userInfo} />
-              ) : (
-                <HeaderButtons />
-              )}
+            {userInfo.id ? <HeaderDropdown userInfo={userInfo} /> : <HeaderButtons />}
 
             </Col>
           </Row>
