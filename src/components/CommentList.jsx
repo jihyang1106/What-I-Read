@@ -1,49 +1,57 @@
 import { Avatar, Button, List, Skeleton } from 'antd';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import '../css/comment.css'
-const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
-const CommentList = (comments) => {
+import { moreComment, recentCommentCreate } from '../store/module/Post';
+const CommentList = ({BookReport_id}) => {
   const [initLoading, setInitLoading] = useState(true);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [list, setList] = useState([]);
-  useEffect(() => {
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        setInitLoading(false);
-        setData(res.results);
-        setList(res.results);
-      });
+  const dispatch = useDispatch();
+  const recentComment = useSelector((state) => state.Post.recentComment).find(e => e.post_id == BookReport_id)
+  console.log(recentComment)
+  async function commentLoad(){
+
+    const data = await axios({
+      method: 'post',
+      url: 'http://localhost:5000/book/commentList',
+      data : {
+        BookReport_id
+      }
+    });
+    
+    const commentdata = {
+      post_id : BookReport_id,
+      comment : data.data
+    }
+    if(data.data.length !=0){
+      dispatch(recentCommentCreate(commentdata))
+    }
+    setInitLoading(false);
+    setData(data.data);
+    setList(data.data);
+  }
+  useEffect( () => {
+    commentLoad();
   }, []);
-  const onLoadMore = () => {
-    setLoading(true);
-    setList(
-      data.concat(
-        [...new Array(count)].map(() => ({
-          loading: true,
-          name: {},
-          picture: {},
-        })),
-      ),
-    );
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        const newData = data.concat(res.results);
-        setData(newData);
-        setList(newData);
-        setLoading(false);
-        // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-        // In real scene, you can using public method of react-virtualized:
-        // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-        window.dispatchEvent(new Event('resize'));
-      });
+
+  const onLoadMore = async () => {
+    const CommentLength = recentComment?.comment.length
+
+    const data = await axios({
+      method: 'post',
+      url: 'http://localhost:5000/book/commentList',
+      data : {
+        BookReport_id,
+        CommentLength
+      }
+    });
+    console.log(data.data)
+    dispatch(moreComment({BookReport_id, comment:data.data}))
   };
-  const loadMore =
-    !initLoading && !loading ? (
-      <div
+  const loadMore = <div
         style={{
           textAlign: 'center',
           marginTop: 12,
@@ -51,26 +59,26 @@ const CommentList = (comments) => {
           lineHeight: '32px',
         }}
       >
-        <Button onClick={onLoadMore}>loading more</Button>
+        <Button onClick={onLoadMore}>댓글 더보기</Button>
       </div>
-    ) : null;
   return (
     <div style={{marginTop: '35px'}}>
       <List
       className="demo-loadmore-list"
-      loading={initLoading}
+      //loading={initLoading}
       itemLayout="horizontal"
       loadMore={loadMore}
-      dataSource={list}
+      dataSource={recentComment?.comment}
       renderItem={(item) => (
         <List.Item
-          actions={[<a key="list-loadmore-more">답글 달기</a>]}
+        actions={[<a key={item}>답글 달기/삭제</a>]}
         >
-          <Skeleton avatar title={false} loading={item.loading} active>
+          
+          <Skeleton avatar title={false} loading={false} active>
             <List.Item.Meta
-              avatar={<Avatar src={item.picture.large} />}
-              title={<a href="https://ant.design">{item.name?.last}</a>}
-              description="Ant Design, a "
+              avatar={<Avatar src='https://w7.pngwing.com/pngs/981/645/png-transparent-default-profile-united-states-computer-icons-desktop-free-high-quality-person-icon-miscellaneous-silhouette-symbol.png' />}
+              title={<a href="https://ant.design">{item.User_id}</a>}
+              description={item.comment}
             />
           </Skeleton>
         </List.Item>

@@ -25,7 +25,7 @@ app.use(
 );
 
 sequelize
-  .sync({ alter: true }) // force : false
+  .sync({ force: false }) // force : false
   .then(() => {
     console.log('데이터베이스 연결됨.');
   })

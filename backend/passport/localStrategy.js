@@ -1,5 +1,5 @@
 const passport = require('passport');
-const localStrategy = require('passport-local').Strategy;
+const localStrategy = require('passport-local').Strategy; //이메일(id)과 비밀번호로 로그인하는 걸 도와주는 전략
 // const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
@@ -12,7 +12,7 @@ module.exports = () => {
         usernameField: 'id', //req.body.id
         passwordField: 'password', //req.body.pw
       },
-      async (id, password, done) => {
+      async (id, password, done) => { //로그인하는 전략 함수
         console.log(id, password);
         try {
           const exUser = await User.findOne({ where: { id: id } });

@@ -12,40 +12,9 @@ import '../css/post.css';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { recentPostCreate } from '../store/module/Post';
+import { recentCommentRemove } from './../store/module/Post';
 
-const post = {
-  id: 1,
-  User: {
-    id: 1,
-    nickname: '96승승',
-  },
-  content: '독후감 내용'.repeat(100),
-  Images: [
-    {
-      src: 'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
-    },
-    {
-      src: 'https://gimg.gilbut.co.kr/book/BN001958/rn_view_BN001958.jpg',
-    },
-    {
-      src: 'https://gimg.gilbut.co.kr/book/BN001998/rn_view_BN001998.jpg',
-    },
-  ],
-  Comments: [
-    {
-      User: {
-        nickname: 'nero',
-      },
-      content: '우와 개정판이 나왔군요~',
-    },
-    {
-      User: {
-        nickname: 'hero',
-      },
-      content: '얼른 사고싶어요~',
-    },
-  ],
-};
+
 
 /**최근 게시물 10개 요청 함수 - 한승보 */
 async function recentPostRequest() {
@@ -61,7 +30,10 @@ export default function Post() {
   const [commentFormOpened, setCommentFormOpened] = useState([]);
   const [liked, setLiked] = useState(false);
   const { recentPost } = useSelector((state) => state.Post);
+  console.log(recentPost)
+  
   const { nickName } = useSelector((state) => state.User.userInfo);
+  const recentComment = useSelector((state) => state.Post.recentComment)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -78,6 +50,7 @@ export default function Post() {
       const arr = [...commentFormOpened];
       arr.splice(arr.indexOf(e), 1);
       setCommentFormOpened(arr);
+      dispatch(recentCommentRemove(e))
       return;
     }
     const arr = [...commentFormOpened, e];
@@ -131,8 +104,8 @@ export default function Post() {
                 //extra={<FollowButton post={post} />}
               >
                 <Card.Meta
-                  avatar={<Avatar>{nickName}</Avatar>}
-                  title={nickName}
+                  avatar={<Avatar>{el.User.nickname}</Avatar>}
+                  title={el.User.nickname}
                   description={el.content}
                 />
               </Card>
@@ -144,7 +117,7 @@ export default function Post() {
               {commentFormOpened.includes(el.id) && (
                 <div style={{ width: '100%' }}>
                   <CommentForm BookReport_id={el.id} />
-                  <CommentList comment={post.Comments} />
+                  <CommentList BookReport_id={el.id} />
                 </div>
               )}
             </Col>

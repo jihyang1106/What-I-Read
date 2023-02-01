@@ -1,13 +1,15 @@
 import { Button, Form, Input } from 'antd';
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addComment } from '../store/module/Post';
 
 const CommentForm = ({ BookReport_id }) => {
+  console.log('commentForm렌더됨');
   const [commentText, setCommentText] = useState('');
   const sessionUserInfo = window.sessionStorage.getItem('sessionUserInfo');
   const userInfo = JSON.parse(sessionUserInfo); // JSON 문자열을 객체, 배열로 변환
-
-  console.log(userInfo);
+  const dispatch = useDispatch();
 
   const onSubmitComment = useCallback(async () => {
     console.log(commentText);
@@ -20,7 +22,9 @@ const CommentForm = ({ BookReport_id }) => {
         comment: commentText,
       },
     });
-    console.log(data);
+    console.log(data.data);
+    console.log({BookReport_id,comment:data.data})
+    dispatch(addComment({BookReport_id,comment:data.data}))
   }, [commentText]);
 
   const onChangeCommentText = useCallback((e) => {
