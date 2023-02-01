@@ -44,7 +44,7 @@ router.post('/login', (req, res, next) => {
     if (!user) {
       return res.send(info.message);
     }
-    return req.login(user, (loginError) => {
+    return req.login(user, (loginError) => {//패스포트 로그인 부분 - 내 서비스에서 로그인성공하면 패스포트에서도 한 번 더 한다 호출시 동시에 - 세션에 저장(설정해야함)
       //req.login 메서드가 passport.serializeUser() 호출
       if (loginError) {
         console.error(loginError);
@@ -52,7 +52,7 @@ router.post('/login', (req, res, next) => {
       }
       console.log(user.dataValues);
       delete user.dataValues.pw;
-      return res.send(user);
+      return res.send(user); 
     });
   })(req, res, next); //미들웨어 내에 미들웨어
 });

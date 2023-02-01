@@ -1,6 +1,6 @@
 const express = require('express');
 const BookReport = require('../models/BookReport');
-const { User } = require('../models');
+const { User, Comment } = require('../models');
 
 const router = express.Router();
 
@@ -38,7 +38,54 @@ router.post('/recentRecordList', async (req, res, next) => {
 
 router.post('/comment', async (req, res, next) => {
   console.log(req.body);
-  const { User_id, BookReport_id } = req.body;
+  const { User_id, BookReport_id, comment } = req.body;
+  const commentInfo = await Comment.create({
+    User_id, BookReport_id, comment
+  })
+  
+  res.send(commentInfo)
+});
+
+router.post('/commentList', async (req, res, next) => {
+  console.log(req.body);
+  const {BookReport_id, CommentLength} = req.body
+  if(CommentLength){
+    console.log(CommentLength)
+    const comments = await Comment.findAll({
+      where:{
+        BookReport_id
+      },
+      limit: 3,
+      offset:CommentLength,
+      order:[['id', 'DESC']],
+      include: [
+        {
+          model: User,
+          attributes: ['nickname'],
+        },
+      ],
+    })
+    console.log(comments)
+    res.send(comments)
+  }else {
+    const comments = await Comment.findAll({
+      where:{
+        BookReport_id
+      },
+      limit: 3,
+      order:[['id', 'DESC']],
+      include: [
+        {
+          model: User,
+          attributes: ['nickname'],
+        },
+      ],
+    })
+    console.log(comments)
+    res.send(comments)
+  }
+  
+ 
 });
 
 module.exports = router;
