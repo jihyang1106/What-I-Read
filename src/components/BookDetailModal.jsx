@@ -16,6 +16,8 @@ export default function BookDetailModal({ isopen, changeIsOpen, bookInfo }) {
   };
 
   console.log(bookInfo);
+  /**글꼴 설정 */
+  const fontStyle = { fontFamily: 'LineSeedKR-Bd' };
   return (
     <>
       <Modal
@@ -25,14 +27,20 @@ export default function BookDetailModal({ isopen, changeIsOpen, bookInfo }) {
         onCancel={handleCancle}
         footer={null}
         maskClosable={false}
+        style={fontStyle}
       >
         <hr />
         <FixedDiv>책 제목 </FixedDiv>
-        <Input defaultValue={bookInfo.title} readOnly />
+        <Input defaultValue={bookInfo.title} readOnly style={fontStyle} />
         <FixedDiv>저자 </FixedDiv>
-        <Input defaultValue={bookInfo.author} readOnly />
+        <Input defaultValue={bookInfo.author} readOnly style={fontStyle} />
         <FixedDiv>설명 </FixedDiv>
-        <Input.TextArea defaultValue={bookInfo.description} readOnly autoSize />
+        <Input.TextArea
+          defaultValue={bookInfo.description}
+          readOnly
+          autoSize
+          style={fontStyle}
+        />
         <FixedDiv>자세히 보기 </FixedDiv>
         <Input.Group compact>
           <Input

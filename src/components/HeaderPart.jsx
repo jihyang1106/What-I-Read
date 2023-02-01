@@ -27,13 +27,20 @@ export default function HeaderPart() {
     userInfoSet(JSON.parse(window.sessionStorage.getItem('sessionUserInfo')));
   }, [user]);
 
+  /** 폰트 설정 */
+  const fontStyle = {
+    fontFamily: 'LineSeedKR-Bd',
+    fontSize: '40px',
+  };
   return (
     <nav>
       <Layout>
         <Header style={headerStyle}>
           <Row justify="space-between">
             <Col>
-              <Link to="/">What I Read</Link>
+              <Link to="/" style={fontStyle}>
+                What I Read
+              </Link>
             </Col>
             <Col>
               {userInfo != null ? (

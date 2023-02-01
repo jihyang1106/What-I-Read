@@ -6,3 +6,9 @@
 .ant-card-cover img {
   cursor: pointer;
 }
+
+.result {
+  font-family: 'LineSeedKR-Rg';
+  margin: 10px;
+  font-size: 17px;
+}
