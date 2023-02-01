@@ -30,13 +30,18 @@ export default function SearchList() {
 
   const [bookInfo, setBookInfo] = useState('');
 
+  /** 폰트 설정 */
+  const fontStyle = { fontFamily: 'LineSeedKR-Bd' };
+
   return (
     <>
-      <Layout style={{ background: 'white' }}>
+      <Layout style={{ background: 'light-gray' }}>
         <Content style={contentStyle}>
           <Row>
             <Col span={12} offset={6}>
-              <div>{searchListLocal.length}개의 검색결과가 있습니다.</div>
+              <div className="result">
+                {searchListLocal.length}개의 검색결과가 있습니다.
+              </div>
               <Row gutter={[40, 24]}>
                 {searchListLocal.map((el, i) => (
                   <Col
@@ -44,9 +49,9 @@ export default function SearchList() {
                     xs={24}
                     sm={24}
                     md={12}
-                    lg={8}
-                    xl={6}
-                    xxl={6}
+                    lg={12}
+                    xl={8}
+                    xxl={8}
                   >
                     <Card
                       cover={
@@ -63,6 +68,7 @@ export default function SearchList() {
                       <Meta
                         title={el.title.split('-')[0]}
                         description={el.description.slice(0, 50) + '.....'}
+                        style={fontStyle}
                       />
                     </Card>
                     <div className="bookLog">
@@ -71,6 +77,7 @@ export default function SearchList() {
                           changeOpen(true);
                           setBookInfo(el);
                         }}
+                        style={fontStyle}
                       >
                         기록하기
                       </Button>

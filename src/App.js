@@ -10,7 +10,7 @@ import Post from './pages/Post';
 
 export default function App() {
   return (
-    <div>
+    <div className="App">
       <HeaderPart />
       <Routes>
         <Route path="/" element={<Main />} />

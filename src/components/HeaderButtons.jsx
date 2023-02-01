@@ -15,6 +15,12 @@ export default function HeaderButtons() {
   const changeJoin = (join) => {
     setJoin(join);
   };
+
+  /** 폰트 설정 */
+  const fontStyle = {
+    fontFamily: 'LineSeedKR-Rg',
+    fontSize: '18px',
+  };
   return (
     <>
       <Button
@@ -22,6 +28,7 @@ export default function HeaderButtons() {
         onClick={() => {
           setJoin(true);
         }}
+        style={fontStyle}
       >
         Join
       </Button>
@@ -30,6 +37,7 @@ export default function HeaderButtons() {
         onClick={() => {
           setOpen(true);
         }}
+        style={fontStyle}
       >
         SignIn
       </Button>

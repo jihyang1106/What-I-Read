@@ -27,7 +27,8 @@ export default function SignInModal({ open, changeOpen }) {
       dispatch(userInfoCreate(data.data));
       alert('로그인 성공!');
       console.log('로그인 성공 data', data.data);
-      /**객체, 배열을 JSON 문자열로 변환 한뒤 세션 스토리지 저장*/
+
+      /**객체, 배열을 JSON 문자열로 변환 한뒤 세션 스토리지에 유저 정보 저장*/
       const dataJSON = JSON.stringify(data.data);
       window.sessionStorage.setItem('sessionUserInfo', dataJSON);
 

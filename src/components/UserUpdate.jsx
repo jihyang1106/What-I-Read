@@ -29,7 +29,7 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
           sessionStorage.removeItem('sessionUserInfo');
           const dataJSON = JSON.stringify(res.data);
           window.sessionStorage.setItem('sessionUserInfo', dataJSON);
-          navigate('/');
+          // navigate('/');
         }
       })
       .catch((err) => {
