@@ -38,7 +38,7 @@ passportConfig();
 app.use(morgan('dev')); // 로그
 app.use(express.static(path.join(__dirname, 'public'))); // 요청시 기본 경로 설정
 app.use(express.json()); // json 파싱
-app.use(express.urlencoded({ extended: false })); // uri 파싱
+app.use(express.urlencoded({ extended: true })); // uri 파싱
 
 const authRouter = require('./routes/auth');
 const bookRouter = require('./routes/book');

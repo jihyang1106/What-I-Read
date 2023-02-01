@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Input, Form } from 'antd';
 import axios from 'axios';
-import { ConsoleSqlOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 
 export default function BookModal({ open, changeOpen, bookInfo }) {
@@ -45,10 +44,8 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
     }
   };
 
-  // form.setFieldsValue({
-  //   title: '책제목',
-  // });
-
+  /**글꼴 설정 */
+  const fontStyle = { fontFamily: 'LineSeedKR-Bd' };
   return (
     <>
       <Modal
@@ -58,6 +55,7 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
         cancelText="취소"
         onOk={form.submit}
         onCancel={handleCancle}
+        style={fontStyle}
       >
         <hr />
         <Form
@@ -68,18 +66,19 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
             author: bookInfo.author,
           }}
         >
-          <Form.Item name="title" label="제목">
-            <Input readOnly />
+          <Form.Item name="title" label="제목" style={fontStyle}>
+            <Input readOnly style={fontStyle} />
           </Form.Item>
-          <Form.Item name="author" label="저자">
-            <Input readOnly />
+          <Form.Item name="author" label="저자" style={fontStyle}>
+            <Input readOnly style={fontStyle} />
           </Form.Item>
-          <Form.Item name="content" label="기록할 책 내용">
+          <Form.Item name="content" label="기록할 책 내용" style={fontStyle}>
             <Input.TextArea
               value={textarea}
               onChange={(e) => setTextArea(e.target.value)}
               placeholder="기록할 내용을 입력해주세요"
               autoSize={{ minRows: 3 }}
+              style={fontStyle}
             />
           </Form.Item>
         </Form>

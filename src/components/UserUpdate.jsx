@@ -1,5 +1,9 @@
 import React from 'react';
 import { Modal, Input, Form, Select } from 'antd';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { userInfoUpdate } from '../store/module/User';
 const { Option } = Select;
 
 export default function UserUpdate({ open, changeOpen, userInfo }) {
@@ -8,17 +12,34 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
     changeOpen(!open);
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  /** update를 위한 백으로 폼 전송 */
+  const handleSubmit = async (values) => {
+    // console.log(values);
+    const result = await axios
+      .patch('http://localhost:5000/auth/updateUser', {
+        data: values,
+      })
+      .then((res) => {
+        if (res.data) {
+          dispatch(userInfoUpdate(res.data));
+          alert('수정 성공!');
+          sessionStorage.removeItem('sessionUserInfo');
+          const dataJSON = JSON.stringify(res.data);
+          window.sessionStorage.setItem('sessionUserInfo', dataJSON);
+          // navigate('/');
+        }
+      })
+      .catch((err) => {
+        console.log('요상한 에러', err);
+      });
     handleCancel();
   };
 
   /** form 리액트 훅 */
   const [form] = Form.useForm();
-
-  // props로 sessionStorage에 있는 회원정보 값 가져오기
-  const { id, pw, phone, nickName, name } = userInfo;
-  console.log('userInfo.id', id);
 
   /** phone 010부분(prefix) */
   const prefixSelector = (
@@ -43,7 +64,16 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
         onOk={form.submit}
         onCancel={handleCancel}
       >
-        <Form form={form} onFinish={handleSubmit}>
+        <Form
+          form={form}
+          onFinish={handleSubmit}
+          initialValues={{
+            id: userInfo.id,
+            name: userInfo.name,
+            nickname: userInfo.nickName,
+            phone: userInfo.phone,
+          }}
+        >
           &nbsp;
           <Form.Item
             name="id"
@@ -59,7 +89,7 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
               },
             ]}
           >
-            <Input value={id} placeholder="아이디를 입력해주세요" />
+            <Input placeholder="아이디를 입력해주세요" readOnly />
           </Form.Item>
           <Form.Item
             name="password"

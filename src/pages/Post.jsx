@@ -1,13 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Card, Button, Avatar, Popover, List, Row, Col, Skeleton } from 'antd';
+import { Card, Button, Avatar, Popover, Row, Col } from 'antd';
 import {
-  RetweetOutlined,
   HeartTwoTone,
   HeartOutlined,
   MessageOutlined,
   EllipsisOutlined,
 } from '@ant-design/icons';
-import styled from 'styled-components';
 import CommentForm from '../components/CommentForm';
 import CommentList from './../components/CommentList';
 import '../css/post.css';

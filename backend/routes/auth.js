@@ -37,6 +37,7 @@ router.post('/signup', async (req, res, next) => {
 /**로그인 라우터 -한승보 */
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (authError, user, info) => {
+    console.log('req.body', req.body);
     if (authError) {
       console.error(authError);
       return next(authError);
@@ -55,6 +56,43 @@ router.post('/login', (req, res, next) => {
       return res.send(user); 
     });
   })(req, res, next); //미들웨어 내에 미들웨어
+});
+
+/**회원정보수정 : 지향*/
+router.patch('/updateUser', async (req, res) => {
+  console.log('req.body', req.body);
+  let data = {
+    pw: req.body.data.password,
+    name: req.body.data.name,
+    phone: req.body.data.phone,
+    nickName: req.body.data.nickname,
+  };
+
+  const result = await User.update(data, {
+    where: { id: req.body.data.id },
+  });
+
+  let userInfo = {
+    id: req.body.data.id,
+    name: req.body.data.name,
+    phone: data.phone,
+    nickname: data.nickName,
+  };
+  res.send(userInfo);
+});
+
+/**로그아웃 : 지향 */
+router.delete('/logout', async (req, res, next) => {
+  console.log('프론트에서 넘어온 id값', req.body.id);
+
+  req.logout();
+  // DB에서 삭제
+  let result = await User.destroy({
+    where: { id: req.body.id },
+  });
+
+  console.log('삭제 result', result);
+  res.send(result);
 });
 
 module.exports = router;

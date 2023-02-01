@@ -19,9 +19,9 @@ const headerStyle = {
 };
 
 export default function HeaderPart() {
-
   /** useSelector로 store에 있는 isLogin 가져오기 */
   const {userInfo} = useSelector((state) => state.User);
+
 
   const dispatch = useDispatch();
 
@@ -34,16 +34,30 @@ export default function HeaderPart() {
     //userInfo에 저장한다 그러면 새로고침되도 state에 유저정보가 유지된다.
   }, []);
   
+   /** 폰트 설정 */
+  const fontStyle = {
+    fontFamily: 'LineSeedKR-Bd',
+    fontSize: '40px',
+  };
+
   return (
     <nav>
       <Layout>
         <Header style={headerStyle}>
           <Row justify="space-between">
             <Col>
-              <Link to="/">What I Read</Link>
+              <Link to="/" style={fontStyle}>
+                What I Read
+              </Link>
             </Col>
             <Col>
-              {userInfo.id ? <HeaderDropdown userInfo={userInfo} /> : <HeaderButtons />}
+
+              {userInfo != null ? (
+                <HeaderDropdown userInfo={userInfo} />
+              ) : (
+                <HeaderButtons />
+              )}
+
             </Col>
           </Row>
         </Header>
