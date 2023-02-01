@@ -13,10 +13,6 @@ const contentStyle = {
 };
 
 export default function SearchList() {
-  // localStorage에 저장한 값 가져오기
-  const searchListStr = window.localStorage.getItem('searchListLocal');
-  const searchListLocal = JSON.parse(searchListStr); // JSON 문자열을 객체, 배열로 변환
-
   /** BookModal 모달 창 state */
   const [open, setOpen] = useState(false);
   const changeOpen = (open) => {
@@ -28,10 +24,11 @@ export default function SearchList() {
     setIsOpen(isopen);
   };
 
+  /** 모달창에 보내기 위한 bookInfo */
   const [bookInfo, setBookInfo] = useState('');
-
-  /** 폰트 설정 */
-  const fontStyle = { fontFamily: 'LineSeedKR-Bd' };
+  // localStorage에 저장한 값 가져오기
+  const searchListStr = window.localStorage.getItem('searchListLocal');
+  const searchListLocal = JSON.parse(searchListStr); // JSON 문자열을 객체, 배열로 변환
 
   return (
     <>
@@ -67,8 +64,11 @@ export default function SearchList() {
                     >
                       <Meta
                         title={el.title.split('-')[0]}
-                        description={el.description.slice(0, 50) + '.....'}
-                        style={fontStyle}
+                        description={
+                          el.description
+                            ? el.description.slice(0, 50) + '...'
+                            : '설명이 없습니다.'
+                        }
                       />
                     </Card>
                     <div className="bookLog">
@@ -77,7 +77,6 @@ export default function SearchList() {
                           changeOpen(true);
                           setBookInfo(el);
                         }}
-                        style={fontStyle}
                       >
                         기록하기
                       </Button>

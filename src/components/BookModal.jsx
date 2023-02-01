@@ -55,7 +55,6 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
         cancelText="취소"
         onOk={form.submit}
         onCancel={handleCancle}
-        style={fontStyle}
       >
         <hr />
         <Form
@@ -66,13 +65,13 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
             author: bookInfo.author,
           }}
         >
-          <Form.Item name="title" label="제목" style={fontStyle}>
+          <Form.Item name="title" label="제목">
             <Input readOnly style={fontStyle} />
           </Form.Item>
-          <Form.Item name="author" label="저자" style={fontStyle}>
+          <Form.Item name="author" label="저자">
             <Input readOnly style={fontStyle} />
           </Form.Item>
-          <Form.Item name="content" label="기록할 책 내용" style={fontStyle}>
+          <Form.Item name="content" label="기록할 책 내용">
             <Input.TextArea
               value={textarea}
               onChange={(e) => setTextArea(e.target.value)}

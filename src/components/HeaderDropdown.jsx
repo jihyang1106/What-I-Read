@@ -4,6 +4,7 @@ import { DownOutlined } from '@ant-design/icons';
 import UserUpdate from './UserUpdate';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import GlobalStyle from '../css/GlobalStyle';
 
 export default function HeaderDropdown({ userInfo }) {
   /** UserUpdate 모달 창 state */
@@ -38,15 +39,8 @@ export default function HeaderDropdown({ userInfo }) {
     // });
   };
 
-  // const showLogout = async (id) => {
-  // // alert('로그아웃 하시겠습니까?');
-  // setLogout(true);
-  // const result = await axios.delete('http://localhost:5000/auth/logout', {
-  //   data: id,
-  // });
-  // useEffect(() => {
-  //   console.log('logout 변경', logout);
-  // }, [logout]);
+  /**글꼴 설정 */
+  const fontStyle = { fontFamily: 'LineSeedKR-Bd' };
 
   /** 드롭다운 메뉴 */
   const items = [
@@ -57,6 +51,7 @@ export default function HeaderDropdown({ userInfo }) {
           onClick={() => {
             console.log('나의 서재로 이동');
           }}
+          style={fontStyle}
         >
           나의 서재
         </Button>
@@ -96,6 +91,7 @@ export default function HeaderDropdown({ userInfo }) {
 
   return (
     <>
+      <GlobalStyle />
       <Dropdown
         menu={{
           items,

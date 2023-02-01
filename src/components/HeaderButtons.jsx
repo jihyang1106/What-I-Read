@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'antd';
 import JoinModal from './JoinModal';
 import SignInModal from './SignInModal';
+import GlobalStyle from '../css/GlobalStyle';
 
 export default function HeaderButtons() {
   /** signIn 모달 창 state */
@@ -16,19 +17,14 @@ export default function HeaderButtons() {
     setJoin(join);
   };
 
-  /** 폰트 설정 */
-  const fontStyle = {
-    fontFamily: 'LineSeedKR-Rg',
-    fontSize: '18px',
-  };
   return (
     <>
+      <GlobalStyle />
       <Button
         type="text"
         onClick={() => {
           setJoin(true);
         }}
-        style={fontStyle}
       >
         Join
       </Button>
@@ -37,7 +33,6 @@ export default function HeaderButtons() {
         onClick={() => {
           setOpen(true);
         }}
-        style={fontStyle}
       >
         SignIn
       </Button>
