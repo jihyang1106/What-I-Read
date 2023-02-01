@@ -27,15 +27,10 @@ export default function Search() {
     /** searchList.jsx로 페이지 이동 */
     navigate('searchList');
   }
-
-  /** 폰트 설정 */
-  const fontStyle = { fontFamily: 'LineSeedKR-Bd' };
-
   return (
     <div>
       <input ref={input} type="text" />
       <button
-        style={fontStyle}
         onClick={() => {
           if (input.current.value !== '') search();
           else alert('헤이 거기 도서를 입력해주세요!');

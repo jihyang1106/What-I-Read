@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Input, Form, Select } from 'antd';
 import axios from 'axios';
+
 const { Option } = Select;
 
 export default function JoinModal({ join, changeJoin }) {
@@ -42,6 +43,8 @@ export default function JoinModal({ join, changeJoin }) {
     </Form.Item>
   );
 
+  /**글꼴 설정 */
+  const fontStyle = { fontFamily: 'LineSeedKR-Bd' };
   return (
     <>
       <Modal
@@ -68,7 +71,7 @@ export default function JoinModal({ join, changeJoin }) {
               },
             ]}
           >
-            <Input placeholder="아이디를 입력해주세요" />
+            <Input placeholder="아이디를 입력해주세요" style={fontStyle} />
           </Form.Item>
           <Form.Item
             name="password"
@@ -85,7 +88,7 @@ export default function JoinModal({ join, changeJoin }) {
             ]}
             hasFeedback
           >
-            <Input.Password placeholder="비밀번호를 입력해주세요" />
+            <Input.Password />
           </Form.Item>
           <Form.Item
             name="confirm"
@@ -123,7 +126,7 @@ export default function JoinModal({ join, changeJoin }) {
               },
             ]}
           >
-            <Input placeholder="이름을 입력해주세요" />
+            <Input placeholder="이름을 입력해주세요" style={fontStyle} />
           </Form.Item>
           <Form.Item
             name="nickname"
@@ -139,7 +142,7 @@ export default function JoinModal({ join, changeJoin }) {
               },
             ]}
           >
-            <Input placeholder="닉네임을 입력해주세요" />
+            <Input placeholder="닉네임을 입력해주세요" style={fontStyle} />
           </Form.Item>
           <Form.Item
             name="phone"

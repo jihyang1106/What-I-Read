@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userInfoUpdate } from '../store/module/User';
+import GlobalStyle from '../css/GlobalStyle';
+
 const { Option } = Select;
 
 export default function UserUpdate({ open, changeOpen, userInfo }) {
@@ -54,6 +56,9 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
     </Form.Item>
   );
 
+  /**글꼴 설정 */
+  const fontStyle = { fontFamily: 'LineSeedKR-Bd' };
+
   return (
     <>
       <Modal
@@ -89,7 +94,11 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
               },
             ]}
           >
-            <Input placeholder="아이디를 입력해주세요" readOnly />
+            <Input
+              placeholder="아이디를 입력해주세요"
+              readOnly
+              style={fontStyle}
+            />
           </Form.Item>
           <Form.Item
             name="password"
@@ -106,7 +115,7 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
             ]}
             hasFeedback
           >
-            <Input.Password placeholder="비밀번호를 입력해주세요" />
+            <Input.Password />
           </Form.Item>
           <Form.Item
             name="confirm"
@@ -144,7 +153,7 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
               },
             ]}
           >
-            <Input placeholder="이름을 입력해주세요" />
+            <Input placeholder="이름을 입력해주세요" style={fontStyle} />
           </Form.Item>
           <Form.Item
             name="nickname"
@@ -160,7 +169,7 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
               },
             ]}
           >
-            <Input placeholder="닉네임을 입력해주세요" />
+            <Input placeholder="닉네임을 입력해주세요" style={fontStyle} />
           </Form.Item>
           <Form.Item
             name="phone"
