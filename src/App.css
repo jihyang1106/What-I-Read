@@ -1,6 +1,6 @@
 a,
 a:hover {
-  color: black;
+  color: rgb(237, 233, 233);
 }
 
 .login-form-forgot {
@@ -9,8 +9,11 @@ a:hover {
 
 body {
   background-color: white;
+  color: #fff;
 }
-
+.ant-space-item {
+  color: #fff;
+}
 /*폰트 설정 */
 @font-face {
   font-family: 'LINESeedKR-Bd';

@@ -52,7 +52,9 @@ export default function post(state = initState, action) {
         recentPost: action.payload,
       };
     case RECENTCOMMENT:
-      console.log(action.payload);
+      console.log('state : ', state);
+      console.log('payload : ', action.payload);
+
       return {
         ...state,
         recentComment: [...state.recentComment, action.payload],
@@ -70,9 +72,17 @@ export default function post(state = initState, action) {
     case ADDCOMMENT:
       console.log(action.payload);
       console.log(state.recentComment);
+      console.log(
+        state.recentComment.filter(
+          (e) => e.post_id == action.payload.BookReport_id
+        ).length
+      );
       const arr =
-        state.recentComment.length === 0
+        state.recentComment.filter(
+          (e) => e.post_id == action.payload.BookReport_id
+        ).length == 0
           ? [
+              ...state.recentComment,
               {
                 post_id: action.payload.BookReport_id,
                 comment: [action.payload.comment],

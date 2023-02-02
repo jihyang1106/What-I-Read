@@ -25,6 +25,7 @@ export default function HeaderButtons() {
         onClick={() => {
           setJoin(true);
         }}
+        style={{ color: '#fff' }}
       >
         Join
       </Button>

@@ -3,10 +3,14 @@ import '../css/main.css';
 import SearchInput from '../components/SearchInput';
 import NewList from '../components/NewList';
 import BestsellerList from '../components/BestsellerList';
+import styled from 'styled-components';
 
 export default function Main() {
+  const Main = styled.main`
+    background-image: url('library.jpg');
+  `;
   return (
-    <>
+    <Main className="main">
       <div className="banner">
         <SearchInput />
       </div>
@@ -14,6 +18,6 @@ export default function Main() {
         <BestsellerList />
         <NewList />
       </div>
-    </>
+    </Main>
   );
 }
