@@ -12,18 +12,18 @@ import '../css/list.css';
 import { Pagination } from 'swiper';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { bestcellerListCreate } from '../store/module/Book';
+import { bestsellerListCreate } from '../store/module/Book';
 
-export default function BestcellerList() {
+export default function BestsellerList() {
   const Dispatch = useDispatch();
-  const bestcellerListState = useSelector((state) => state.Book.bestcellerList);
+  const bestsellerListState = useSelector((state) => state.Book.bestsellerList);
 
   async function MainPageBookListRender() {
     await axios({
       method: 'get',
       url: 'aladin/ttb/api/ItemList.aspx?QueryType=Bestseller&MaxResults=10&start=1&cover=MidBig&SearchTarget=Book&output=js&Version=20131101&ttbkey=ttb96tmdqh1639001',
     }).then((data) => {
-      Dispatch(bestcellerListCreate(data.data.item));
+      Dispatch(bestsellerListCreate(data.data.item));
     });
   }
 
@@ -54,7 +54,7 @@ export default function BestcellerList() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {bestcellerListState.map((el) => (
+        {bestsellerListState.map((el) => (
           <SwiperSlide key={el.itemId}>
             <img src={el.cover} alt="" />
             {/* <p>{el.title.split('-')[0]}</p> */}

@@ -13,6 +13,7 @@ export default function HeaderDropdown({ userInfo }) {
     setOpen(open);
   };
 
+  /**유저 정보 */
   const { id, nickName } = userInfo;
   const navigate = useNavigate();
 
@@ -38,10 +39,6 @@ export default function HeaderDropdown({ userInfo }) {
     // }
     // });
   };
-
-  /**글꼴 설정 */
-  const fontStyle = { fontFamily: 'LineSeedKR-Bd' };
-
   /** 드롭다운 메뉴 */
   const items = [
     {
@@ -49,9 +46,8 @@ export default function HeaderDropdown({ userInfo }) {
         <Button
           type="none"
           onClick={() => {
-            console.log('나의 서재로 이동');
+            navigate('/mybookList');
           }}
-          style={fontStyle}
         >
           나의 서재
         </Button>
@@ -107,7 +103,6 @@ export default function HeaderDropdown({ userInfo }) {
         </Button>
       </Dropdown>
       {<UserUpdate open={open} changeOpen={changeOpen} userInfo={userInfo} />}
-      {logout === true ? signOut(id) : null}
     </>
   );
 }

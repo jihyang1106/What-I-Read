@@ -26,7 +26,8 @@ export default function SearchList() {
 
   /** 모달창에 보내기 위한 bookInfo */
   const [bookInfo, setBookInfo] = useState('');
-  // localStorage에 저장한 값 가져오기
+
+  // localStorage에 저장한 값 가져와서 프론트에 뿌리기
   const searchListStr = window.localStorage.getItem('searchListLocal');
   const searchListLocal = JSON.parse(searchListStr); // JSON 문자열을 객체, 배열로 변환
 
@@ -74,8 +75,14 @@ export default function SearchList() {
                     <div className="bookLog">
                       <Button
                         onClick={() => {
-                          changeOpen(true);
-                          setBookInfo(el);
+                          if (
+                            sessionStorage.getItem('sessionUserInfo') === null
+                          ) {
+                            alert('로그인 후 이용해주세요');
+                          } else {
+                            changeOpen(true);
+                            setBookInfo(el);
+                          }
                         }}
                       >
                         기록하기
