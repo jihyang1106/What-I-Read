@@ -90,7 +90,6 @@ router.post('/commentList', async (req, res, next) => {
 
 /** 나의 서재 리스트 */
 router.get('/mybookList', async (req, res) => {
-  console.log('요청 들어왔어용');
   console.log(req.query.id);
   const result = await BookReport.findAll({
     where: {
@@ -99,6 +98,18 @@ router.get('/mybookList', async (req, res) => {
     order: [['id', 'DESC']],
   });
   res.send(result);
+});
+
+/** 나의 서재에서 나의 기록 수정 */
+router.patch('/mybookUpdate', async (req, res) => {
+  let data = {
+    content: req.body.data.content,
+  };
+  const result = await BookReport.update(data, {
+    where: { id: req.body.data.id, User_id: req.body.data.User_id },
+  });
+  console.log(result);
+  res.send(data);
 });
 
 module.exports = router;

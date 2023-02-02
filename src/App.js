@@ -5,7 +5,6 @@ import SearchList from './pages/SearchList';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import HeaderPart from './components/HeaderPart';
-import User from './pages/User';
 import Post from './pages/Post';
 import MyBookList from './pages/MyBookList';
 
@@ -15,7 +14,6 @@ export default function App() {
       <HeaderPart />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/user" element={<User />} />
         <Route path="*" element={<Error />} />
         <Route path="/searchList" element={<SearchList />} />
         <Route path="/post" element={<Post />} />
