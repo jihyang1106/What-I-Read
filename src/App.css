@@ -1,5 +1,5 @@
-a,
-a:hover {
+nav a,
+nav a:hover,nav span {
   color: rgb(237, 233, 233);
 }
 

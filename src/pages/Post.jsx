@@ -32,8 +32,6 @@ export default function Post() {
   const { recentPost } = useSelector((state) => state.Post);
   console.log(recentPost)
   
-  const { nickName } = useSelector((state) => state.User.userInfo);
-  const recentComment = useSelector((state) => state.Post.recentComment)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -58,10 +56,10 @@ export default function Post() {
   };
 
   return (
-    <>
+    <div className='main'>
       {commentFormOpened.length}
       {recentPost.map((el) => (
-        <div key={el.id}>
+        <div key={el.id} style={{marginTop:'50px', border:'1px solid rgb(117, 230, 245)' }}>
           <Row>
             <Col sm={0} lg={4}></Col>
             <Col
@@ -124,6 +122,6 @@ export default function Post() {
           </Row>
         </div>
       ))}
-    </>
+    </div>
   );
 }
