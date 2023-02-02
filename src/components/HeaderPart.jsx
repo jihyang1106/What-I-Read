@@ -13,8 +13,7 @@ const { Header } = Layout;
 const headerStyle = {
   color: 'black',
   height: 64,
-  paddingInline: 50,
-  lineHeight: '64px',
+  padding: 20,
   backgroundColor: 'white',
 };
 

@@ -3,8 +3,10 @@ import { Button, Dropdown, Space } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import UserUpdate from './UserUpdate';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import GlobalStyle from '../css/GlobalStyle';
+import { userInfoDelete } from '../store/module/User';
 
 export default function HeaderDropdown({ userInfo }) {
   /** UserUpdate 모달 창 state */
@@ -16,29 +18,16 @@ export default function HeaderDropdown({ userInfo }) {
   /**유저 정보 */
   const { id, nickName } = userInfo;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  /** 로그아웃 구현 */
-  const [logout, setLogout] = useState(false);
-  const changeLogout = (logout) => {
-    setLogout(logout);
+  /** 로그아웃 state */
+  const changeLogOut = () => {
+    sessionStorage.removeItem('sessionUserInfo');
+    alert('로그아웃 되었습니다.');
+    dispatch(userInfoDelete());
+    navigate('/');
   };
 
-  const signOut = async (id) => {
-    // const data = { id: id };
-    console.log('signOut 함수', logout);
-    const result = await axios.delete('http://localhost:5000/auth/logout', {
-      data: { id: id },
-    });
-    console.log(result);
-    // .then((res) => {
-    //   console.log(res.data);
-    // if (res.data === true) {
-    //   sessionStorage.removeItem('sessionUserInfo');
-    //   setLogout(false);
-    //   navigate('/');
-    // }
-    // });
-  };
   /** 드롭다운 메뉴 */
   const items = [
     {
@@ -75,7 +64,7 @@ export default function HeaderDropdown({ userInfo }) {
         <Button
           type="none"
           onClick={() => {
-            changeLogout(!logout);
+            changeLogOut();
           }}
         >
           로그아웃

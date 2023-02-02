@@ -11,6 +11,10 @@ class BookReport extends Sequelize.Model {
           type: Sequelize.STRING(100),
           allowNull: false,
         },
+        author: {
+          type: Sequelize.TEXT,
+          allowNull: false,
+        },
         content: {
           type: Sequelize.TEXT,
           allowNull: false,
