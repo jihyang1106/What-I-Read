@@ -20,21 +20,24 @@ const headerStyle = {
 
 export default function HeaderPart() {
   /** useSelector로 store에 있는 isLogin 가져오기 */
-  const {userInfo} = useSelector((state) => state.User);
-
-
+  const { userInfo } = useSelector((state) => state.User);
+  const update = useSelector((state) => state.User.isUpdate);
   const dispatch = useDispatch();
 
   //const [userInfo, userInfoSet] = useState(user);
   useEffect(() => {
-    console.log('HeaderPart')
+    console.log('HeaderPart');
     //userInfoSet(JSON.parse(window.sessionStorage.getItem('sessionUserInfo')));
-    dispatch(userInfoCreate(JSON.parse(window.sessionStorage.getItem('sessionUserInfo'))))
-    //헤더는 항상 화면에 존재하니까 새로고침할 때마다 세션스토리지에 저장된거를 store의 
+    dispatch(
+      userInfoCreate(
+        JSON.parse(window.sessionStorage.getItem('sessionUserInfo'))
+      )
+    );
+    //헤더는 항상 화면에 존재하니까 새로고침할 때마다 세션스토리지에 저장된거를 store의
     //userInfo에 저장한다 그러면 새로고침되도 state에 유저정보가 유지된다.
-  }, []);
-  
-   /** 폰트 설정 */
+  }, [update]);
+
+  /** 폰트 설정 */
   const fontStyle = {
     fontFamily: 'LineSeedKR-Bd',
     fontSize: '40px',
@@ -51,9 +54,11 @@ export default function HeaderPart() {
               </Link>
             </Col>
             <Col>
-
-            {userInfo.id ? <HeaderDropdown userInfo={userInfo} /> : <HeaderButtons />}
-
+              {userInfo.id ? (
+                <HeaderDropdown userInfo={userInfo} />
+              ) : (
+                <HeaderButtons />
+              )}
             </Col>
           </Row>
         </Header>

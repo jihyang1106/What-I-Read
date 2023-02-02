@@ -1,7 +1,7 @@
 const initState = {
   isLogin: false,
+  isUpdate: false,
   userInfo: {},
-  userInfoUpdate: {},
 };
 
 //액션 타입 정의하기 : 승보
@@ -27,10 +27,10 @@ export function userInfoUpdate(payload) {
 export default function user(state = initState, action) {
   switch (action.type) {
     case USER_INFO:
-      console.log(action.payload)
+      console.log(action.payload);
       return { ...state, isLogin: true, userInfo: { ...action.payload } };
     case USER_UPDATE:
-      return { ...state, isLogin: true, userInfo: { ...action.payload } };
+      return { ...state, isUpdate: true, userInfo: { ...action.payload } };
     default:
       return state;
   }
