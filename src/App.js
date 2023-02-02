@@ -7,6 +7,7 @@ import './App.css';
 import HeaderPart from './components/HeaderPart';
 import User from './pages/User';
 import Post from './pages/Post';
+import MyBookList from './pages/MyBookList';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="*" element={<Error />} />
         <Route path="/searchList" element={<SearchList />} />
         <Route path="/post" element={<Post />} />
+        <Route path="/mybookList" element={<MyBookList />} />
       </Routes>
     </div>
   );

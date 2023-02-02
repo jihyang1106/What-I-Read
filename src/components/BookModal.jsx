@@ -39,6 +39,7 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
 
     if (data) {
       alert('기록완료!');
+      handleCancle();
     } else {
       alert('기록실패!');
     }

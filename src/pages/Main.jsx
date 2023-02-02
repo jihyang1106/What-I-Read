@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/main.css';
 import SearchInput from '../components/SearchInput';
 import NewList from '../components/NewList';
-import BestcellerList from '../components/BestcellerList';
+import BestsellerList from '../components/BestsellerList';
 
 export default function Main() {
   return (
@@ -11,7 +11,7 @@ export default function Main() {
         <SearchInput />
       </div>
       <div style={{ maxWidth: '1500px', margin: '0 auto', padding: '0 30px' }}>
-        <BestcellerList />
+        <BestsellerList />
         <NewList />
       </div>
     </>
