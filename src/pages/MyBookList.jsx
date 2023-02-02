@@ -13,12 +13,11 @@ const contentStyle = {
 
 export default function MyBookList({ openbook, openBook }) {
   const id = JSON.parse(sessionStorage.getItem('sessionUserInfo')).id;
-  const param = { id: id };
 
   const reqBookList = async () => {
     await axios
       .get('http://localhost:5000/book/mybookList', {
-        params: param,
+        params: { id: id },
       })
       .then((res) => {
         console.log('res.data', res.data);
@@ -27,6 +26,7 @@ export default function MyBookList({ openbook, openBook }) {
   useEffect(() => {
     reqBookList();
   }, []);
+
   /** BookModal 모달 창 state */
   const [open, setOpen] = useState(false);
   const changeOpen = (open) => {

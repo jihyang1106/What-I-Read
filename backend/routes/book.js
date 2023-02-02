@@ -88,10 +88,17 @@ router.post('/commentList', async (req, res, next) => {
   }
 });
 
-router.get('/mybookList', (req, res) => {
+/** 나의 서재 리스트 */
+router.get('/mybookList', async (req, res) => {
   console.log('요청 들어왔어용');
-  console.log('req.query'.req);
-  res.send(true);
+  console.log(req.query.id);
+  const result = await BookReport.findAll({
+    where: {
+      User_id: req.query.id,
+    },
+    order: [['id', 'DESC']],
+  });
+  res.send(result);
 });
 
 module.exports = router;
