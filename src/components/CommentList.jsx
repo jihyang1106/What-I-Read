@@ -11,6 +11,7 @@ const CommentList = ({ BookReport_id }) => {
   );
   console.log(recentComment);
   async function commentLoad() {
+
     const data = await axios({
       method: 'post',
       url: 'http://localhost:5000/book/commentList',
@@ -32,8 +33,12 @@ const CommentList = ({ BookReport_id }) => {
   }, []);
 
   const onLoadMore = async () => {
+  
     const CommentLength = recentComment?.comment.length;
-
+    if(CommentLength < 3){
+      alert('더 이상 댓글이 없습니다.')
+      return
+    }
     const data = await axios({
       method: 'post',
       url: 'http://localhost:5000/book/commentList',

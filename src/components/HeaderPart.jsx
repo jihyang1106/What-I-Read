@@ -11,15 +11,18 @@ import { userInfoCreate } from '../store/module/User';
 const { Header } = Layout;
 
 const headerStyle = {
-
+  zIndex: 1,
   color: '#fff',
-  height: '5vh',
+  height: '7vh',
   position: 'fixed',
   width: '100%',
   backgroundColor: '#000',
-  opacity: 0.6,
+  opacity: 0.3,
   paddingTop: '5px',
-
+  display: 'flex',
+  padding: '10px 5vw',
+  alignItems: 'center',
+  justifyContent: 'space-between',
 };
 
 export default function HeaderPart() {
@@ -50,8 +53,8 @@ export default function HeaderPart() {
   return (
     <nav>
       <Layout>
-        <Header style={headerStyle}>
-          <Row justify="space-between">
+ 
+          <Row style={headerStyle} >
             <Col>
               <Link to="/" style={fontStyle}>
                 What I Read
@@ -65,7 +68,7 @@ export default function HeaderPart() {
               )}
             </Col>
           </Row>
-        </Header>
+
       </Layout>
     </nav>
   );

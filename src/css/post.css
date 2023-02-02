@@ -1,3 +1,8 @@
+.main {
+  height: 100%;
+  border: 1px solid rgb(117, 230, 245);
+}
+
 img + div {
   display: flex !important;
   flex-direction: column !important;
@@ -24,20 +29,20 @@ img + div > div {
   overflow-y: scroll;
 }
 img {
-  width: 20vw;
+  width: 15vw;
   max-height: 300px;
 }
 img + div {
-  width: 30vw;
+  width: 35vw;
   max-height: 300px;
 }
 @media (max-width: 992px) {
   img {
-    width: 40vw;
+    width: 30vw;
     height: 40vw;
   }
   img + div {
-    width: 60vw;
+    width: 70vw;
     height: 40vw;
   }
 }

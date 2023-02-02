@@ -14,6 +14,10 @@ export default function Main() {
       <div className="banner">
         <SearchInput />
       </div>
+      <div className='one'>
+        <div>1</div>
+        <div>2</div>
+      </div>
       <div style={{ maxWidth: '1500px', margin: '0 auto', padding: '0 30px' }}>
         <BestsellerList />
         <NewList />
