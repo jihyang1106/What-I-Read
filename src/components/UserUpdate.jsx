@@ -3,7 +3,9 @@ import { Modal, Input, Form, Select } from 'antd';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { userInfoCreate, userInfoUpdate } from '../store/module/User';
+
+import { userInfoCreate } from '../store/module/User';
+
 import GlobalStyle from '../css/GlobalStyle';
 
 const { Option } = Select;

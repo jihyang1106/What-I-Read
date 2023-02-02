@@ -18,7 +18,9 @@ export default function BookDetailModal({ isopen, changeIsOpen, bookInfo }) {
   /**글꼴 설정 */
   const fontStyle = { fontFamily: 'LineSeedKR-Bd' };
   /** 책 설명이 없을 때 */
-  const defaultValue = bookInfo.description ? bookInfo.description : '';
+  const defaultValue = bookInfo.description
+    ? bookInfo.description.replace(/[&lt;&gt;]/g, '')
+    : '';
 
   return (
     <>

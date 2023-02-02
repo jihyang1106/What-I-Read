@@ -1,11 +1,13 @@
 const initState = {
   bestsellerList: [],
   newList: [],
+  mybookInfo: [],
 };
 
 //액션 타입 정의하기 : 승보
-const BESTSELLER = 'main/BESTSELLER';
-const NEWLIST = 'main/NEWLIST';
+const BESTSELLER = 'book/BESTSELLER';
+const NEWLIST = 'book/NEWLIST';
+const MYBOOKINFO = 'book/MYBOOKINFO';
 
 //액션 생성함수 작성 - reducer와 연결된 함수 : 승보
 export function bestsellerListCreate(payload) {
@@ -17,6 +19,13 @@ export function bestsellerListCreate(payload) {
 export function newListCreate(payload) {
   return {
     type: NEWLIST,
+    payload,
+  };
+}
+
+export function mybookCreate(payload) {
+  return {
+    type: MYBOOKINFO,
     payload,
   };
 }
@@ -34,7 +43,11 @@ export default function book(state = initState, action) {
         ...state,
         newList: action.payload,
       };
-
+    case MYBOOKINFO:
+      return {
+        ...state,
+        mybookInfo: action.payload,
+      };
     default:
       return state;
   }

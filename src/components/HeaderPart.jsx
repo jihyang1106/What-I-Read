@@ -11,6 +11,7 @@ import { userInfoCreate } from '../store/module/User';
 const { Header } = Layout;
 
 const headerStyle = {
+
   color: '#fff',
   height: '5vh',
   position: 'fixed',
@@ -18,6 +19,7 @@ const headerStyle = {
   backgroundColor: '#000',
   opacity: 0.6,
   paddingTop: '5px',
+
 };
 
 export default function HeaderPart() {

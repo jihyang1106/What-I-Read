@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BookModal from '../components/BookModal';
 import BookDetailModal from '../components/BookDetailModal';
 import { useState } from 'react';
@@ -31,6 +31,9 @@ export default function SearchList() {
   const searchListStr = window.localStorage.getItem('searchListLocal');
   const searchListLocal = JSON.parse(searchListStr); // JSON 문자열을 객체, 배열로 변환
 
+  for (var i = 0; i < searchListLocal.length; i++) {
+    console.log(searchListLocal[i].description);
+  }
   return (
     <>
       <Layout style={{ background: 'light-gray' }}>
@@ -67,7 +70,9 @@ export default function SearchList() {
                         title={el.title.split('-')[0]}
                         description={
                           el.description
-                            ? el.description.slice(0, 50) + '...'
+                            ? el.description
+                                .replace(/[&lt; &gt;]/g, ' ')
+                                .slice(0, 100) + '...'
                             : '설명이 없습니다.'
                         }
                       />
