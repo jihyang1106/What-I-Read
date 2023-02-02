@@ -28,9 +28,10 @@ export default function Search() {
     navigate('searchList');
   }
   return (
-    <div>
+    <div className="input">
       <input ref={input} type="text" />
       <button
+        className="inputBtn"
         onClick={() => {
           if (input.current.value !== '') search();
           else alert('헤이 거기 도서를 입력해주세요!');

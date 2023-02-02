@@ -1,3 +1,7 @@
+.main {
+  height: 100vh;
+}
+
 .contentStyle {
   text-align: center;
   height: 400px;
@@ -10,6 +14,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: pink;
-  height: 200px;
+  /* background: rgb(210, 133, 103); */
+  height: 20vh;
+}
+
+.input {
+  position: relative;
+}
+
+input {
+  width: 25vw;
+  height: 30px;
+  border-radius: 30px;
+  border: 3px solid #000;
+}
+.inputBtn {
+  height: 35px;
+  width: 60px;
+  position: absolute;
+  right: 2px;
+  border-radius: 0 30px 30px 0;
+  background: #000;
+  color: #fff;
 }

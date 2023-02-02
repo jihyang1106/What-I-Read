@@ -1,13 +1,14 @@
 const initState = {
   isLogin: false,
-  isUpdate: false,
   userInfo: {},
 };
 
 //액션 타입 정의하기 : 승보
 const USER_INFO = 'user/USERINFO';
+
 const USER_UPDATE = 'user/USERUPDATE';
 const USER_DELETE = 'user/USERDELETE';
+
 
 //액션 생성함수 작성 - reducer와 연결된 함수 : 승보
 export function userInfoCreate(payload) {
@@ -17,12 +18,7 @@ export function userInfoCreate(payload) {
   };
 }
 
-export function userInfoUpdate(payload) {
-  return {
-    type: USER_UPDATE,
-    payload,
-  };
-}
+
 
 export function userInfoDelete() {
   return {
@@ -30,14 +26,13 @@ export function userInfoDelete() {
   };
 }
 
+
 //리듀서 : 승보
 export default function user(state = initState, action) {
   switch (action.type) {
     case USER_INFO:
       console.log(action.payload);
-      return { ...state, isLogin: true, userInfo: { ...action.payload } };
-    case USER_UPDATE:
-      return { ...state, isUpdate: true, userInfo: { ...action.payload } };
+      return { ...state, isLogin: true, userInfo: action.payload };
     case USER_DELETE:
       return { ...state, userInfo: {} };
     default:

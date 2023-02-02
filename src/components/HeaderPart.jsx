@@ -11,10 +11,15 @@ import { userInfoCreate } from '../store/module/User';
 const { Header } = Layout;
 
 const headerStyle = {
-  color: 'black',
-  height: 64,
-  padding: 20,
-  backgroundColor: 'white',
+
+  color: '#fff',
+  height: '5vh',
+  position: 'fixed',
+  width: '100%',
+  backgroundColor: '#000',
+  opacity: 0.6,
+  paddingTop: '5px',
+
 };
 
 export default function HeaderPart() {
@@ -53,7 +58,7 @@ export default function HeaderPart() {
               </Link>
             </Col>
             <Col>
-              {userInfo.id ? (
+              {userInfo?.id ? (
                 <HeaderDropdown userInfo={userInfo} />
               ) : (
                 <HeaderButtons />

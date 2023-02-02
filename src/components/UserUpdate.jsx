@@ -3,7 +3,9 @@ import { Modal, Input, Form, Select } from 'antd';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import { userInfoCreate } from '../store/module/User';
+
 import GlobalStyle from '../css/GlobalStyle';
 
 const { Option } = Select;
@@ -26,6 +28,7 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
       })
       .then((res) => {
         if (res.data) {
+          console.log(res.data);
           alert('수정 성공!');
           sessionStorage.removeItem('sessionUserInfo');
           const dataJSON = JSON.stringify(res.data);
