@@ -8,7 +8,8 @@
 }
 
 .result {
-  font-family: 'LineSeedKR-Rg';
-  margin: 10px;
-  font-size: 17px;
+  color: black;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 10px;
 }

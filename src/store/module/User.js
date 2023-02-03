@@ -5,10 +5,7 @@ const initState = {
 
 //액션 타입 정의하기 : 승보
 const USER_INFO = 'user/USERINFO';
-
-const USER_UPDATE = 'user/USERUPDATE';
 const USER_DELETE = 'user/USERDELETE';
-
 
 //액션 생성함수 작성 - reducer와 연결된 함수 : 승보
 export function userInfoCreate(payload) {
@@ -18,14 +15,11 @@ export function userInfoCreate(payload) {
   };
 }
 
-
-
 export function userInfoDelete() {
   return {
     type: USER_DELETE,
   };
 }
-
 
 //리듀서 : 승보
 export default function user(state = initState, action) {

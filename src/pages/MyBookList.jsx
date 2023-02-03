@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { mybookCreate } from '../store/module/Book';
 import MyBookModal from '../components/MybookModal';
+import '../css/searchList.css';
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -40,6 +41,8 @@ export default function MyBookList({ openbook, openBook }) {
 
   /** 모달창에 보내기 위한 bookInfo */
   const [mybook, setmybook] = useState('');
+  console.log(mybookInfo.length);
+
   return (
     <>
       <Layout style={{ backgroundColor: 'white' }}>

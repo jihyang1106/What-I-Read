@@ -34,6 +34,7 @@ export default function SearchList() {
   for (var i = 0; i < searchListLocal.length; i++) {
     console.log(searchListLocal[i].description);
   }
+
   return (
     <>
       <Layout style={{ background: 'light-gray' }}>
