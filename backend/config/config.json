@@ -2,15 +2,15 @@
   "development": {
     "host": "localhost",
     "username": "root",
-    "password": "3306",
+    "password": "root1106",
     "database": "book",
     "dialect": "mysql"
   },
   "production": {
     "database": "book",
     "host": "localhost",
-    "username": "root",
-    "password": "root1106",
+    "username": "user",
+    "password": "shkshk12!",
     "dialect": "mysql"
   }
 }
