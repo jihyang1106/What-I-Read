@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { searchListCreate } from '../store/module/Search';
+import http from '../api';
 
 export default function Search() {
   const input = useRef();
@@ -14,9 +15,9 @@ export default function Search() {
   async function search() {
     const value = input.current.value;
     // console.log(value);
-    const data = await axios({
+    const data = await http({
       method: 'get',
-      url: `aladin/ttb/api/ItemSearch.aspx?ttbkey=ttb96tmdqh1639001&Query=${value}&QueryType=Title&MaxResults=10&start=1&SearchTarget=Book&output=js&Version=20131101`,
+      url: `/ItemSearch.aspx?ttbkey=ttb96tmdqh1639001&Query=${value}&QueryType=Title&MaxResults=10&start=1&SearchTarget=Book&output=js&Version=20131101`,
     });
     // console.log(data);
     await Dispatch(searchListCreate(data.data.item));
@@ -31,7 +32,6 @@ export default function Search() {
   return (
     <div className="input">
       <input ref={input} type="text" />
-
       <button
         className="inputBtn"
         onClick={() => {

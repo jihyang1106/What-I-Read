@@ -17,9 +17,16 @@ app.set('port', process.env.PORT || 5000);
 /** React와 Node.js 서버간 ajax 요청 원활히 하기 위해 */
 app.use(express.json()); // 유저가 보낸 array/object 데이터 출력하기 위해 필요
 
+// app.use(
+//   cors({
+//     origin: ['http://118.67.143.160:3000/', 'http://localhost:3000/'],
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
-    origin: ['http://118.67.143.160:3000/', 'http://localhost:3000/'],
+    origin: 'http://localhost:3000/',
     credentials: true,
   })
 );
