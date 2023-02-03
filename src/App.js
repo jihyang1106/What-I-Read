@@ -7,6 +7,7 @@ import './App.css';
 import HeaderPart from './components/HeaderPart';
 import Post from './pages/Post';
 import MyBookList from './pages/MyBookList';
+import List from './pages/List';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <HeaderPart />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/list" element={<List />} />
         <Route path="*" element={<Error />} />
         <Route path="/searchList" element={<SearchList />} />
         <Route path="/post" element={<Post />} />

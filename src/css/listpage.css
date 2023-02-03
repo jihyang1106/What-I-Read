@@ -1,0 +1,69 @@
+.one {
+  position: relative;
+  height: 500px;
+}
+.one img {
+  position: absolute;
+  transition: all 0.5s;
+}
+/* img {
+  transform: skewX(30deg) rotate(30deg);
+} */
+.div0 {
+  width: 150px;
+  height: 270px;
+  top: 30vh;
+  left: 40%;
+  transform: translate(-50%) skewX(30deg) rotate(30deg);
+}
+.div7 {
+  width: 150px;
+  height: 270px;
+  top: 30vh;
+  left: 60%;
+  transform: translate(-50%) skewX(-30deg) rotate(-30deg);
+}
+.div6 {
+  width: 150px;
+  height: 270px;
+  top: 20vh;
+  left: 70%;
+  transform: translate(-50%) skewY(-30deg) rotateY(75deg);
+}
+.div5 {
+  width: 150px;
+  height: 270px;
+  top: 10vh;
+  left: 70%;
+  transform: translate(-50%) skewY(30deg) rotateY(60deg);
+}
+.div4 {
+  width: 150px;
+  height: 270px;
+  top: 3vh;
+  left: 60%;
+  transform: translate(-50%) skewY(8deg) rotate(0deg);
+}
+.div3 {
+  width: 150px;
+  height: 270px;
+  top: 3vh;
+  left: 40%;
+  transform: translate(-50%) skewY(-8deg) rotate(0deg);
+}
+
+.div2 {
+  width: 150px;
+  height: 270px;
+  top: 10vh;
+  left: 30%;
+  transform: translate(-50%) skewY(-30deg) rotateY(60deg);
+}
+.div1 {
+  z-index: 1;
+  width: 150px;
+  height: 270px;
+  top: 20vh;
+  left: 30%;
+  transform: translate(-50%) skewY(30deg) rotateY(70deg);
+}
