@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import '../css/list.css';
+import http from '../api';
 
 // import required modules
 import { Pagination } from 'swiper';
@@ -19,9 +20,9 @@ export default function BestsellerList() {
   const bestsellerListState = useSelector((state) => state.Book.bestsellerList);
 
   async function MainPageBookListRender() {
-    await axios({
+    await http({
       method: 'get',
-      url: 'aladin/ttb/api/ItemList.aspx?QueryType=Bestseller&MaxResults=8&start=1&cover=MidBig&SearchTarget=Book&output=js&Version=20131101&ttbkey=ttb96tmdqh1639001',
+      url: '/ItemList.aspx?QueryType=Bestseller&MaxResults=8&start=1&cover=MidBig&SearchTarget=Book&output=js&Version=20131101&ttbkey=ttb96tmdqh1639001',
     }).then((data) => {
       Dispatch(bestsellerListCreate(data.data.item));
     });

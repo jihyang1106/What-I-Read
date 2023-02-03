@@ -8,9 +8,9 @@
   },
   "production": {
     "database": "book",
-    "host": "118.67.143.160",
-    "username": "user",
-    "password": "shkshk12!",
+    "host": "localhost",
+    "username": "root",
+    "password": "root1106",
     "dialect": "mysql"
   }
 }
