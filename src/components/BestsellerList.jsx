@@ -21,7 +21,7 @@ export default function BestsellerList() {
   async function MainPageBookListRender() {
     await axios({
       method: 'get',
-      url: 'aladin/ttb/api/ItemList.aspx?QueryType=Bestseller&MaxResults=10&start=1&cover=MidBig&SearchTarget=Book&output=js&Version=20131101&ttbkey=ttb96tmdqh1639001',
+      url: 'aladin/ttb/api/ItemList.aspx?QueryType=Bestseller&MaxResults=8&start=1&cover=MidBig&SearchTarget=Book&output=js&Version=20131101&ttbkey=ttb96tmdqh1639001',
     }).then((data) => {
       Dispatch(bestsellerListCreate(data.data.item));
     });
