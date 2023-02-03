@@ -7,13 +7,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import '../css/list.css';
-import http from '../api';
 
 // import required modules
 import { Pagination } from 'swiper';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 import { bestsellerListCreate } from '../store/module/Book';
+import http from '../api';
 
 export default function BestsellerList() {
   const Dispatch = useDispatch();
@@ -55,13 +54,12 @@ export default function BestsellerList() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {bestsellerListState &&
-          bestsellerListState.map((el) => (
-            <SwiperSlide key={el.itemId}>
-              <img src={el.cover} alt="" />
-              {/* <p>{el.title.split('-')[0]}</p> */}
-            </SwiperSlide>
-          ))}
+        {bestsellerListState.map((el) => (
+          <SwiperSlide key={el.itemId}>
+            <img src={el.cover} alt="" />
+            {/* <p>{el.title.split('-')[0]}</p> */}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
