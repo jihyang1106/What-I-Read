@@ -53,22 +53,26 @@ export default function HeaderPart() {
   return (
     <nav>
       <Layout>
- 
-          <Row style={headerStyle} >
-            <Col>
-              <Link to="/" style={fontStyle}>
-                What I Read
-              </Link>
-            </Col>
-            <Col>
-              {userInfo?.id ? (
-                <HeaderDropdown userInfo={userInfo} />
-              ) : (
-                <HeaderButtons />
-              )}
-            </Col>
-          </Row>
+        <Row style={headerStyle}>
+          <Col>
+            <Link to="/" style={fontStyle}>
+              What I Read
+            </Link>
+          </Col>
+          <Col>
+            <Link to="/"></Link>
+          </Col>
 
+          <Col>
+            <Link to="/post">공유</Link>
+            <Link to="/list">랭킹</Link>
+            {userInfo?.id ? (
+              <HeaderDropdown userInfo={userInfo} />
+            ) : (
+              <HeaderButtons />
+            )}
+          </Col>
+        </Row>
       </Layout>
     </nav>
   );
