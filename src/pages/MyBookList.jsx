@@ -22,7 +22,7 @@ export default function MyBookList({ openbook, openBook }) {
 
   const reqBookList = async () => {
     await axios
-      .get('http://localhost:3000/book/mybookList', {
+      .get('/book/mybookList', {
         params: { id: id },
       })
       .then((res) => {

@@ -18,7 +18,7 @@ import { recentCommentRemove } from './../store/module/Post';
 async function recentPostRequest() {
   const data = await axios({
     method: 'post',
-    url: 'http://localhost:3000/book/recentRecordList',
+    url: '/book/recentRecordList',
   });
   console.log(data);
   return data;

@@ -16,7 +16,7 @@ export default function Main() {
       <div className="banner">
         <SearchInput />
       </div>
-      <div class="imgLoader"></div>
+      <div className="imgLoader"></div>
 
       <div className="container">
         <h1 className="title">Turning pageswith css</h1>

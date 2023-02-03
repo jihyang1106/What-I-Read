@@ -31,10 +31,6 @@ export default function SearchList() {
   const searchListStr = window.localStorage.getItem('searchListLocal');
   const searchListLocal = JSON.parse(searchListStr); // JSON 문자열을 객체, 배열로 변환
 
-  for (var i = 0; i < searchListLocal.length; i++) {
-    console.log(searchListLocal[i].description);
-  }
-
   return (
     <>
       <Layout style={{ background: 'light-gray' }}>

@@ -48,13 +48,19 @@ export default function BookDetailModal({ isopen, changeIsOpen, bookInfo }) {
         <Input.Group compact>
           <Input
             style={{
-              width: 'calc(100% - 200px)',
+              width: 'calc(100% - 35px)',
               fontFamily: 'LineSeedKR-Bd',
             }}
             defaultValue={bookInfo.link}
           />
+          &nbsp;
           <Tooltip title="copy url">
-            <Button icon={<CopyOutlined />} />
+            <Button
+              icon={<CopyOutlined />}
+              onClick={() => {
+                window.open(`${bookInfo.link}`);
+              }}
+            />
           </Tooltip>
         </Input.Group>
       </Modal>

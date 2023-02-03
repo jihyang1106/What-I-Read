@@ -15,7 +15,7 @@ const CommentForm = ({ BookReport_id }) => {
     console.log(commentText);
     const data = await axios({
       method: 'post',
-      url: 'http://localhost:3000/book/comment',
+      url: '/book/comment',
       data: {
         User_id: userInfo.id,
         BookReport_id,

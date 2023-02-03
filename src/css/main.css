@@ -14,7 +14,7 @@
   position: relative;
 }
 
-input {
+.banner input {
   font-size: 20px;
   padding-left: 20px;
   width: 25vw;

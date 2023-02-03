@@ -5,7 +5,7 @@ const BookReport = require('./BookReport');
 const Comment = require('./Comment');
 
 //데이터베이스 설정을 불러온다고 말할 수 있다.
-const config = require('../config/config.json')['development'];
+const config = require('../config/config.json')['production'];
 
 const db = {};
 

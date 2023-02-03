@@ -13,7 +13,7 @@ const CommentList = ({ BookReport_id }) => {
   async function commentLoad() {
     const data = await axios({
       method: 'post',
-      url: 'http://localhost:3000/book/commentList',
+      url: '/book/commentList',
       data: {
         BookReport_id,
       },
@@ -39,7 +39,7 @@ const CommentList = ({ BookReport_id }) => {
     }
     const data = await axios({
       method: 'post',
-      url: 'http://localhost:3000/book/commentList',
+      url: '/book/commentList',
       data: {
         BookReport_id,
         CommentLength,
