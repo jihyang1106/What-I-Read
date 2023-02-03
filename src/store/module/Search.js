@@ -17,6 +17,7 @@ export function searchListCreate(payload) {
 export default function search(state = initState, action) {
   switch (action.type) {
     case SEARCHLIST:
+      console.log(action.payload)
       return {
         ...state,
         searchList: action.payload,

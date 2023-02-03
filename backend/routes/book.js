@@ -1,6 +1,7 @@
 const express = require('express');
 const BookReport = require('../models/BookReport');
 const { User, Comment } = require('../models');
+const { default: axios } = require('axios');
 
 const router = express.Router();
 
@@ -113,6 +114,15 @@ router.patch('/mybookUpdate', async (req, res) => {
   });
   console.log(result);
   res.send(result);
+});
+router.post('/bestSeller', async (req, res) => {
+  const bestSeller = await axios({
+    method: 'get',
+    url: `http://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=${encodeURIComponent('ttb96tmdqh1639001')}&QueryType=ItemNewAll&MaxResults=8&start=1&SearchTarget=Book&output=js&Version=20131101`,
+    
+  })
+    console.log(bestSeller.data.item)
+  res.send(bestSeller.data.item)
 });
 
 module.exports = router;

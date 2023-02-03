@@ -12,6 +12,9 @@ const CommentForm = ({ BookReport_id }) => {
   const dispatch = useDispatch();
 
   const onSubmitComment = useCallback(async () => {
+    if(!userInfo?.id){
+      return alert('로그인 후 입력하세요')
+    }
     console.log(commentText);
     const data = await axios({
       method: 'post',

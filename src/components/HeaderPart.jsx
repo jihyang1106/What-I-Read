@@ -16,13 +16,15 @@ const headerStyle = {
   height: '7vh',
   position: 'fixed',
   width: '100%',
-  backgroundColor: '#000',
-  opacity: 0.3,
+  background: 'rgba(0, 0, 0, 0.2)',
   paddingTop: '5px',
   display: 'flex',
   padding: '10px 5vw',
   alignItems: 'center',
   justifyContent: 'space-between',
+  backdropFilter: 'blur(10px)'
+
+
 };
 
 export default function HeaderPart() {
@@ -64,8 +66,8 @@ export default function HeaderPart() {
           </Col>
 
           <Col>
-            <Link to="/post">공유</Link>
-            <Link to="/list">랭킹</Link>
+            <Link style={{padding:'0 10px'}} to="/post">독후감공유</Link>
+            <Link style={{padding:'0 10px'}} to="/list">BookList</Link>
             {userInfo?.id ? (
               <HeaderDropdown userInfo={userInfo} />
             ) : (
