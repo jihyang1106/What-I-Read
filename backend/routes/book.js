@@ -105,11 +105,14 @@ router.patch('/mybookUpdate', async (req, res) => {
   let data = {
     content: req.body.data.content,
   };
-  const result = await BookReport.update(data, {
+  await BookReport.update(data, {
+    where: { id: req.body.data.id, User_id: req.body.data.User_id },
+  });
+  const result = await BookReport.findOne({
     where: { id: req.body.data.id, User_id: req.body.data.User_id },
   });
   console.log(result);
-  res.send(data);
+  res.send(result);
 });
 
 module.exports = router;

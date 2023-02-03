@@ -3,6 +3,7 @@ import { Modal, Input, Form } from 'antd';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { mybookUpdate } from '../store/module/Book';
 
 export default function MybookModal({ open, changeOpen, mybook }) {
   /** form 리액트 훅 */
@@ -10,6 +11,7 @@ export default function MybookModal({ open, changeOpen, mybook }) {
   const { id } = useSelector((state) => state.User.userInfo);
 
   const navigator = useNavigate();
+  const dispatch = useDispatch();
 
   /** TextArea */
   const [textarea, setTextArea] = useState('');
@@ -21,13 +23,18 @@ export default function MybookModal({ open, changeOpen, mybook }) {
 
   /** 폼 전송 - bookInfo를 다 전달해주기 위해선 매개변수에 북인포를 전달해야해서 일단 함수를 리턴해줬다. 그 함수에 매개변수에 인풋밸류들을 넣어준다. */
   const handleSubmit = (mybook) => async (inputvalue) => {
+    let data = {
+      id: mybook.id,
+      content: inputvalue.content,
+      User_id: id,
+    };
     await axios
       .patch('http://localhost:5000/book/mybookUpdate', {
-        data: { User_id: id, content: inputvalue.content, id: mybook.id },
+        data,
       })
       .then((res) => {
         alert('수정되었습니다.');
-        console.log('res.data', res.data);
+        dispatch(mybookUpdate(res.data));
       });
   };
 
