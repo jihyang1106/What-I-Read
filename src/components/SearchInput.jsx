@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import { searchListCreate } from '../store/module/Search';
 
 export default function Search() {
@@ -30,6 +31,7 @@ export default function Search() {
   return (
     <div className="input">
       <input ref={input} type="text" />
+
       <button
         className="inputBtn"
         onClick={() => {

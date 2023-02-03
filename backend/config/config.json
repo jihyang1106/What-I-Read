@@ -1,16 +1,16 @@
 {
   "development": {
+    "host": "localhost",
     "username": "root",
     "password": "3306",
     "database": "book",
-    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "database": "book",
+    "host": "118.67.143.160",
+    "username": "user",
+    "password": "shkshk12!",
     "dialect": "mysql"
   }
 }

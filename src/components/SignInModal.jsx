@@ -17,7 +17,7 @@ export default function SignInModal({ open, changeOpen }) {
 
     const data = await axios({
       method: 'post',
-      url: 'http://localhost:5000/auth/login',
+      url: '/auth/login',
       data: values,
     });
     console.log(data);

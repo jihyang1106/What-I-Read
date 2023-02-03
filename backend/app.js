@@ -19,7 +19,7 @@ app.use(express.json()); // 유저가 보낸 array/object 데이터 출력하기
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://118.67.143.160:3000/', 'http://localhost:3000/'],
     credentials: true,
   })
 );

@@ -15,7 +15,7 @@ const CommentForm = ({ BookReport_id }) => {
     console.log(commentText);
     const data = await axios({
       method: 'post',
-      url: 'http://localhost:5000/book/comment',
+      url: '/book/comment',
       data: {
         User_id: userInfo.id,
         BookReport_id,
@@ -23,8 +23,8 @@ const CommentForm = ({ BookReport_id }) => {
       },
     });
     console.log(data.data);
-    console.log({BookReport_id,comment:data.data})
-    dispatch(addComment({BookReport_id,comment:data.data}))
+    console.log({ BookReport_id, comment: data.data });
+    dispatch(addComment({ BookReport_id, comment: data.data }));
   }, [commentText]);
 
   const onChangeCommentText = useCallback((e) => {
