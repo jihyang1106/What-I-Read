@@ -1,12 +1,11 @@
 const Sequelize = require('sequelize');
-const env = process.env.NODE_ENV || 'development'; // 지정된 환경변수가 없으면 'development'로 지정
 
 const User = require('./User');
 const BookReport = require('./BookReport');
 const Comment = require('./Comment');
 
 //데이터베이스 설정을 불러온다고 말할 수 있다.
-const config = require('../config/config.json')[env];
+const config = require('../config/config.json')['development'];
 
 const db = {};
 

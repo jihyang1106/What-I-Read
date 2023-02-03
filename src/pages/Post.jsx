@@ -14,13 +14,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { recentPostCreate } from '../store/module/Post';
 import { recentCommentRemove } from './../store/module/Post';
 
-
-
 /**최근 게시물 10개 요청 함수 - 한승보 */
 async function recentPostRequest() {
   const data = await axios({
     method: 'post',
-    url: 'http://localhost:5000/book/recentRecordList',
+    url: 'http://localhost:3000/book/recentRecordList',
   });
   console.log(data);
   return data;
@@ -30,8 +28,8 @@ export default function Post() {
   const [commentFormOpened, setCommentFormOpened] = useState([]);
   const [liked, setLiked] = useState(false);
   const { recentPost } = useSelector((state) => state.Post);
-  console.log(recentPost)
-  
+  console.log(recentPost);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -48,7 +46,7 @@ export default function Post() {
       const arr = [...commentFormOpened];
       arr.splice(arr.indexOf(e), 1);
       setCommentFormOpened(arr);
-      dispatch(recentCommentRemove(e))
+      dispatch(recentCommentRemove(e));
       return;
     }
     const arr = [...commentFormOpened, e];
@@ -56,10 +54,13 @@ export default function Post() {
   };
 
   return (
-    <div className='main'>
+    <div className="main">
       {commentFormOpened.length}
       {recentPost.map((el) => (
-        <div key={el.id} style={{marginTop:'50px', border:'1px solid rgb(117, 230, 245)' }}>
+        <div
+          key={el.id}
+          style={{ marginTop: '50px', border: '1px solid rgb(117, 230, 245)' }}
+        >
           <Row>
             <Col sm={0} lg={4}></Col>
             <Col

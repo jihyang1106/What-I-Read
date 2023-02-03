@@ -54,12 +54,13 @@ export default function BestsellerList() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {bestsellerListState.map((el) => (
-          <SwiperSlide key={el.itemId}>
-            <img src={el.cover} alt="" />
-            {/* <p>{el.title.split('-')[0]}</p> */}
-          </SwiperSlide>
-        ))}
+        {bestsellerListState &&
+          bestsellerListState.map((el) => (
+            <SwiperSlide key={el.itemId}>
+              <img src={el.cover} alt="" />
+              {/* <p>{el.title.split('-')[0]}</p> */}
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );

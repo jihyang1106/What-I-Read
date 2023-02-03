@@ -23,7 +23,7 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
 
     const data = await axios({
       method: 'post',
-      url: 'http://localhost:5000/book/record',
+      url: 'http://localhost:3000/book/record',
       data: {
         author,
         categoryName,

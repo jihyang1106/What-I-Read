@@ -23,7 +23,7 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
   const handleSubmit = async (values) => {
     // console.log(values);
     const result = await axios
-      .patch('http://localhost:5000/auth/updateUser', {
+      .patch('http://localhost:3000/auth/updateUser', {
         data: values,
       })
       .then((res) => {

@@ -54,12 +54,13 @@ export default function RecentList() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {newListState.map((el) => (
-          <SwiperSlide key={el.itemId}>
-            <img src={el.cover} alt="" />
-            {/* <p>{el.title.split('-')[0]}</p> */}
-          </SwiperSlide>
-        ))}
+        {newListState &&
+          newListState.map((el) => (
+            <SwiperSlide key={el.itemId}>
+              <img src={el.cover} alt="" />
+              {/* <p>{el.title.split('-')[0]}</p> */}
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );

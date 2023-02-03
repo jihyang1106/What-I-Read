@@ -13,7 +13,7 @@ export default function JoinModal({ join, changeJoin }) {
     console.log(values);
     const data = await axios({
       method: 'post',
-      url: 'http://localhost:5000/auth/signup',
+      url: 'http://localhost:3000/auth/signup',
       data: values,
     });
     console.log(data);
