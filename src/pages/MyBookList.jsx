@@ -12,6 +12,7 @@ const { Meta } = Card;
 
 const contentStyle = {
   marginTop: '60px',
+  height: '100vh'
 };
 
 export default function MyBookList({ openbook, openBook }) {
@@ -45,7 +46,7 @@ export default function MyBookList({ openbook, openBook }) {
 
   return (
     <>
-      <Layout style={{ backgroundColor: 'white' }}>
+      <Layout style={{ backgroundColor: 'white', height: '100%'}}>
         <Content style={contentStyle}>
           <Row>
             <Col span={12} offset={6}>

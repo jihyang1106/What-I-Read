@@ -11,17 +11,17 @@ import '../css/list.css';
 // import required modules
 import { Pagination } from 'swiper';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import { newListCreate } from '../store/module/Book';
-import http from '../api';
 
 export default function RecentList() {
   const Dispatch = useDispatch();
   const newListState = useSelector((state) => state.Book.newList);
 
   async function MainPageBookListRender() {
-    await http({
+    await axios({
       method: 'get',
-      url: '/ItemList.aspx?QueryType=ItemNewSpecial&MaxResults=5&start=1&cover=MidBig&SearchTarget=Book&output=js&Version=20131101&ttbkey=ttb96tmdqh1639001',
+      url: 'aladin/ttb/api/ItemList.aspx?QueryType=ItemNewSpecial&MaxResults=5&start=1&cover=MidBig&SearchTarget=Book&output=js&Version=20131101&ttbkey=ttb96tmdqh1639001',
     }).then((data) => {
       Dispatch(newListCreate(data.data.item));
     });
@@ -54,12 +54,13 @@ export default function RecentList() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {newListState.map((el) => (
-          <SwiperSlide key={el.itemId}>
-            <img src={el.cover} alt="" />
-            {/* <p>{el.title.split('-')[0]}</p> */}
-          </SwiperSlide>
-        ))}
+        {newListState &&
+          newListState.map((el) => (
+            <SwiperSlide key={el.itemId}>
+              <img src={el.cover} alt="" />
+              {/* <p>{el.title.split('-')[0]}</p> */}
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );

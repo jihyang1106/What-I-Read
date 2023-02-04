@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import '../css/main.css';
 import SearchInput from '../components/SearchInput';
 import NewList from '../components/NewList';
-import BestsellerList from '../components/BestsellerList';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import '../css/listpage.css';
@@ -12,51 +11,23 @@ export default function Main() {
   `;
 
   return (
-    <Main className="main">
+    <Main className="main" style={{height: '100vh'}}>
       <div className="banner">
         <SearchInput />
       </div>
-      <div className="imgLoader"></div>
-
-      <div className="container">
-        <h1 className="title">Turning pageswith css</h1>
-
-        <div className="credit">
-          * Images loaded randomly from Picsum.photos
+      <div id="book">
+      <section id="pageSection">
+        <div class="page" id="page1">
+          <h2></h2>
+          <span></span>
         </div>
-
-        <div className="book">
-          <div className="gap"></div>
-          <div className="pages">
-            <div className="page"></div>
-            <div className="page"></div>
-            <div className="page"></div>
-            <div className="page"></div>
-            <div className="page"></div>
-            <div className="page"></div>
-          </div>
-          <div className="flips">
-            <div className="flip flip1">
-              <div className="flip flip2">
-                <div className="flip flip3">
-                  <div className="flip flip4">
-                    <div className="flip flip5">
-                      <div className="flip flip6">
-                        <div className="flip flip7"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    
+        <div class="page" id="page2">
+          <h2>제목</h2>
+          <span>최근 기록</span>
         </div>
-      </div>
-
-      <div style={{ maxWidth: '1500px', margin: '0 auto', padding: '0 30px' }}>
-        <BestsellerList />
-        <NewList />
-      </div>
+      </section>
+    </div>
     </Main>
   );
 }

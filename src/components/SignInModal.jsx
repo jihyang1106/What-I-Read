@@ -2,17 +2,18 @@ import React from 'react';
 import { Modal, Input, Form } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { userInfoCreate } from '../store/module/User';
 
 export default function SignInModal({ open, changeOpen }) {
   /** form 리액트 훅 */
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-
   /** 폼 전송*/
   const handleSubmit = async (values) => {
-    console.log('values', values);
+
+    console.log(values);
+    axios.defaults.withCredentials = true;
 
     const data = await axios({
       method: 'post',

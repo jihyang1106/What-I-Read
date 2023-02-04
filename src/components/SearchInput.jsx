@@ -1,9 +1,9 @@
+import axios from 'axios';
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { searchListCreate } from '../store/module/Search';
-import http from '../api';
 
 export default function Search() {
   const input = useRef();
@@ -14,15 +14,17 @@ export default function Search() {
   async function search() {
     const value = input.current.value;
     // console.log(value);
-    const data = await http({
-      method: 'get',
-      url: `/ItemSearch.aspx?ttbkey=ttb96tmdqh1639001&Query=${value}&QueryType=Title&MaxResults=10&start=1&SearchTarget=Book&output=js&Version=20131101`,
+    const data = await axios({
+      method: 'post',
+      url: `aladin/search`,
+      data: {data:value}
     });
-    // console.log(data);
-    await Dispatch(searchListCreate(data.data.item));
+
+    console.log(data.data);
+    await Dispatch(searchListCreate(data.data));
 
     /**객체, 배열을 JSON 문자열로 변환 한뒤 로컬 스토리지 저장*/
-    const dataJSON = JSON.stringify(data.data.item);
+    const dataJSON = JSON.stringify(data.data);
     window.localStorage.setItem('searchListLocal', dataJSON);
 
     /** searchList.jsx로 페이지 이동 */
@@ -31,6 +33,7 @@ export default function Search() {
   return (
     <div className="input">
       <input ref={input} type="text" />
+
       <button
         className="inputBtn"
         onClick={() => {

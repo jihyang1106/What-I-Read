@@ -54,12 +54,12 @@ export default function Post() {
   };
 
   return (
-    <div className="main">
-      {commentFormOpened.length}
+    <div className="main" style={{paddingTop: '100px'}}>
+
       {recentPost.map((el) => (
         <div
           key={el.id}
-          style={{ marginTop: '50px', border: '1px solid rgb(117, 230, 245)' }}
+          style={{marginBottom:'15px'}}
         >
           <Row>
             <Col sm={0} lg={4}></Col>
@@ -103,7 +103,8 @@ export default function Post() {
                 //extra={<FollowButton post={post} />}
               >
                 <Card.Meta
-                  avatar={<Avatar>{el.User.nickname}</Avatar>}
+                
+                  avatar={<Avatar src='https://w7.pngwing.com/pngs/981/645/png-transparent-default-profile-united-states-computer-icons-desktop-free-high-quality-person-icon-miscellaneous-silhouette-symbol.png'></Avatar>}
                   title={el.User.nickname}
                   description={el.content}
                 />
