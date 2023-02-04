@@ -35,6 +35,7 @@ export default function MybookModal({ open, changeOpen, mybook }) {
       .then((res) => {
         alert('수정되었습니다.');
         dispatch(mybookUpdate(res.data));
+        handleCancle();
       });
   };
 

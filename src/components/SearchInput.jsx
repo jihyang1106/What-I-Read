@@ -16,8 +16,8 @@ export default function Search() {
     // console.log(value);
     const data = await axios({
       method: 'post',
-      url: `aladin/search`,
-      data: {data:value}
+      url: `/aladin/search`,
+      data: { data: value },
     });
 
     console.log(data.data);

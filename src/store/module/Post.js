@@ -109,7 +109,7 @@ export default function post(state = initState, action) {
         if (e.post_id === action.payload.BookReport_id) {
           return {
             post_id: e.post_id,
-            comment: [...action.payload.comment, ...e.comment],
+            comment: [...e.comment, ...action.payload.comment],
           };
         }
         return e;
