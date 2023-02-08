@@ -11,23 +11,23 @@ export default function Main() {
   `;
 
   return (
-    <Main className="main" style={{height: '100vh'}}>
+    <Main className="main" style={{ height: '100vh' }}>
       <div className="banner">
         <SearchInput />
       </div>
       <div id="book">
-      <section id="pageSection">
-        <div class="page" id="page1">
-          <h2></h2>
-          <span></span>
-        </div>
-    
-        <div class="page" id="page2">
-          <h2>제목</h2>
-          <span>최근 기록</span>
-        </div>
-      </section>
-    </div>
+        <section id="pageSection">
+          <div className="page" id="page1">
+            <h2></h2>
+            <span></span>
+          </div>
+
+          <div className="page" id="page2">
+            <h2>제목</h2>
+            <span>최근 기록</span>
+          </div>
+        </section>
+      </div>
     </Main>
   );
 }

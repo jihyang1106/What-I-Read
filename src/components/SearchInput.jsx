@@ -13,11 +13,11 @@ export default function Search() {
 
   async function search() {
     const value = input.current.value;
-    // console.log(value);
+
     const data = await axios({
       method: 'post',
-      url: `aladin/search`,
-      data: {data:value}
+      url: `/aladin/search`,
+      data: { data: value },
     });
 
     console.log(data.data);
@@ -25,7 +25,7 @@ export default function Search() {
 
     /**객체, 배열을 JSON 문자열로 변환 한뒤 로컬 스토리지 저장*/
     const dataJSON = JSON.stringify(data.data);
-    window.localStorage.setItem('searchListLocal', dataJSON);
+    sessionStorage.setItem('searchListLocal', dataJSON);
 
     /** searchList.jsx로 페이지 이동 */
     navigate('searchList');

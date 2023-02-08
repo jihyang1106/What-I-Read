@@ -3,28 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { bestsellerListCreate } from '../store/module/Book';
 
-
-
-
 export default function List() {
-
   const Dispatch = useDispatch();
   const bestsellerListState = useSelector((state) => state.Book.bestsellerList);
 
   async function MainPageBookListRender() {
     const data = await axios({
       method: 'post',
-      url: 'aladin/bestSeller',
-    })
-    console.log(data.data)
+      url: '/aladin/bestSeller',
+    });
+    console.log(data.data);
     Dispatch(bestsellerListCreate(data.data));
   }
 
   useEffect(() => {
     MainPageBookListRender();
   }, []);
-
-
 
   const div0 = useRef();
   const div1 = useRef();
@@ -57,41 +51,46 @@ export default function List() {
   }
 
   const [aladin, setAladin] = useState('Best Seller');
-  async function list(){
+  async function list() {
     await axios({
       method: 'get',
       url: 'aladin/ttb/api/ItemList.aspx?QueryType=ItemNewSpecial&MaxResults=8&start=1&cover=MidBig&SearchTarget=Book&output=js&Version=20131101&ttbkey=ttb96tmdqh1639001',
     }).then((data) => {
       Dispatch(bestsellerListCreate(data.data.item));
     });
-    setAladin('New book')
+    setAladin('New book');
   }
   return (
-    <div className='lp'>
-<div className="one" style={{ marginTop: '300px' }}>
-      <h1>{aladin}</h1>
-      {classN.map((e, i) => (
-        //<div ref={obj[`div${i}`]} className={`div${i}`} key={i}>
-        <img
-          ref={obj[`div${i}`]}
-          className={`div${i}`}
-          key={i}
-          src={bestsellerListState[i]?.cover}
-          alt=""
-        />
-        //</div>
-      ))}
-      <button
-        style={{ marginTop: '500px' }}
-        onClick={(e) => {
-          change(e);
-        }}
-      >
-        버튼
-      </button>
-      <button onClick={(e)=>{list()}}>list</button>
+    <div className="lp">
+      <div className="one" style={{ marginTop: '300px' }}>
+        <h1>{aladin}</h1>
+        {classN.map((e, i) => (
+          //<div ref={obj[`div${i}`]} className={`div${i}`} key={i}>
+          <img
+            ref={obj[`div${i}`]}
+            className={`div${i}`}
+            key={i}
+            src={bestsellerListState[i]?.cover}
+            alt=""
+          />
+          //</div>
+        ))}
+        <button
+          style={{ marginTop: '500px' }}
+          onClick={(e) => {
+            change(e);
+          }}
+        >
+          버튼
+        </button>
+        <button
+          onClick={(e) => {
+            list();
+          }}
+        >
+          list
+        </button>
+      </div>
     </div>
-    </div>
-    
   );
 }

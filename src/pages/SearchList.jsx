@@ -27,7 +27,7 @@ export default function SearchList() {
   /** 모달창에 보내기 위한 bookInfo */
   const [bookInfo, setBookInfo] = useState('');
   // localStorage에 저장한 값 가져와서 프론트에 뿌리기
-  const searchListStr = window.localStorage.getItem('searchListLocal');
+  const searchListStr = sessionStorage.getItem('searchListLocal');
   const searchListLocal = JSON.parse(searchListStr); // JSON 문자열을 객체, 배열로 변환
 
   return (

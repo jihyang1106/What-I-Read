@@ -7,8 +7,8 @@
     "dialect": "mysql"
   },
   "production": {
-    "database": "book",
     "host": "localhost",
+    "database": "book",
     "username": "user",
     "password": "shkshk12!",
     "dialect": "mysql"

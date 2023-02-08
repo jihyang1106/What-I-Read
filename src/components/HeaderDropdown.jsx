@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, Dropdown, Space } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import UserUpdate from './UserUpdate';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
 import GlobalStyle from '../css/GlobalStyle';
 import { userInfoDelete } from '../store/module/User';
 
@@ -23,6 +22,7 @@ export default function HeaderDropdown({ userInfo }) {
   /** 로그아웃 state */
   const changeLogOut = () => {
     sessionStorage.removeItem('sessionUserInfo');
+    sessionStorage.clear();
     alert('로그아웃 되었습니다.');
     dispatch(userInfoDelete());
     navigate('/');
