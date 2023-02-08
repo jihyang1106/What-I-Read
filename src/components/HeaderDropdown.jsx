@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import GlobalStyle from '../css/GlobalStyle';
 import { userInfoDelete } from '../store/module/User';
+import secureLocalStorage from 'react-secure-storage';
 
 export default function HeaderDropdown({ userInfo }) {
   /** UserUpdate 모달 창 state */
@@ -21,8 +22,7 @@ export default function HeaderDropdown({ userInfo }) {
 
   /** 로그아웃 state */
   const changeLogOut = () => {
-    sessionStorage.removeItem('sessionUserInfo');
-    sessionStorage.clear();
+    secureLocalStorage.removeItem('sessionUserInfo');
     alert('로그아웃 되었습니다.');
     dispatch(userInfoDelete());
     navigate('/');

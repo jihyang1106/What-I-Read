@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import HeaderDropdown from './HeaderDropdown';
 import HeaderButtons from './HeaderButtons';
 import { userInfoCreate } from '../store/module/User';
+import secureLocalStorage from 'react-secure-storage';
 
 /** Header CSS */
 const { Header } = Layout;
@@ -22,9 +23,7 @@ const headerStyle = {
   padding: '10px 5vw',
   alignItems: 'center',
   justifyContent: 'space-between',
-  backdropFilter: 'blur(10px)'
-
-
+  backdropFilter: 'blur(10px)',
 };
 
 export default function HeaderPart() {
@@ -36,11 +35,8 @@ export default function HeaderPart() {
   //const [userInfo, userInfoSet] = useState(user);
   useEffect(() => {
     console.log('HeaderPart');
-    //userInfoSet(JSON.parse(window.sessionStorage.getItem('sessionUserInfo')));
     dispatch(
-      userInfoCreate(
-        JSON.parse(window.sessionStorage.getItem('sessionUserInfo'))
-      )
+      userInfoCreate(JSON.parse(secureLocalStorage.getItem('sessionUserInfo')))
     );
     //헤더는 항상 화면에 존재하니까 새로고침할 때마다 세션스토리지에 저장된거를 store의
     //userInfo에 저장한다 그러면 새로고침되도 state에 유저정보가 유지된다.
@@ -66,8 +62,12 @@ export default function HeaderPart() {
           </Col>
 
           <Col>
-            <Link style={{padding:'0 10px'}} to="/post">독후감공유</Link>
-            <Link style={{padding:'0 10px'}} to="/list">BookList</Link>
+            <Link style={{ padding: '0 10px' }} to="/post">
+              독후감공유
+            </Link>
+            <Link style={{ padding: '0 10px' }} to="/list">
+              BookList
+            </Link>
             {userInfo?.id ? (
               <HeaderDropdown userInfo={userInfo} />
             ) : (
