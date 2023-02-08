@@ -21,6 +21,8 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
     const { author, categoryName, cover, link, title } = bookInfo;
     const { content } = inputvalue;
 
+    console.log(bookInfo);
+
     const data = await axios({
       method: 'post',
       url: '/book/record',
@@ -34,8 +36,6 @@ export default function BookModal({ open, changeOpen, bookInfo }) {
         id,
       },
     });
-
-    console.log(data);
 
     if (data) {
       alert('기록완료!');

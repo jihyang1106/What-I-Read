@@ -11,8 +11,6 @@ export default function SignInModal({ open, changeOpen }) {
   const dispatch = useDispatch();
   /** 폼 전송*/
   const handleSubmit = async (values) => {
-
-    console.log(values);
     axios.defaults.withCredentials = true;
 
     const data = await axios({
@@ -23,16 +21,12 @@ export default function SignInModal({ open, changeOpen }) {
     console.log(data);
 
     if (data.data.id) {
-      console.log(data.data);
       dispatch(userInfoCreate(data.data));
       alert('로그인 성공!');
-      console.log('로그인 성공 data', data.data);
 
       /**객체, 배열을 JSON 문자열로 변환 한뒤 세션 스토리지에 유저 정보 저장*/
       const dataJSON = JSON.stringify(data.data);
       window.sessionStorage.setItem('sessionUserInfo', dataJSON);
-
-      //헤더에서 state 변
     } else {
       console.log('로그인 성공 실패', data.data);
       alert(data.data);

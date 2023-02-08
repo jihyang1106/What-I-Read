@@ -25,7 +25,7 @@ export function userInfoDelete() {
 export default function user(state = initState, action) {
   switch (action.type) {
     case USER_INFO:
-      console.log(action.payload);
+      // console.log(action.payload);
       return { ...state, isLogin: true, userInfo: action.payload };
     case USER_DELETE:
       return { ...state, userInfo: {} };
