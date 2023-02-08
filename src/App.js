@@ -9,9 +9,12 @@ import Post from './pages/Post';
 import MyBookList from './pages/MyBookList';
 import List from './pages/List';
 import axios from 'axios';
+import secureLocalStorage from 'react-secure-storage';
 
 axios.defaults.baseURL = 'http://localhost:5000';
 // axios.defaults.baseURL = 'http://118.67.143.160:5000';
+
+secureLocalStorage.clear();
 
 export default function App() {
   return (

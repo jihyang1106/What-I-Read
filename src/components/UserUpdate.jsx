@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import secureLocalStorage from 'react-secure-storage';
 import { userInfoCreate } from '../store/module/User';
 
-import GlobalStyle from '../css/GlobalStyle';
-
 const { Option } = Select;
 
 export default function UserUpdate({ open, changeOpen, userInfo }) {
@@ -21,7 +19,7 @@ export default function UserUpdate({ open, changeOpen, userInfo }) {
 
   /** update를 위한 백으로 폼 전송 */
   const handleSubmit = async (values) => {
-    // console.log(values);
+    console.log(values);
     const result = await axios
       .patch('/auth/updateUser', {
         data: values,
