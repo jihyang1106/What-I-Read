@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { searchListCreate } from '../store/module/Search';
+import secureLocalStorage from 'react-secure-storage';
 
 export default function Search() {
   const input = useRef();
@@ -25,7 +26,7 @@ export default function Search() {
 
     /**객체, 배열을 JSON 문자열로 변환 한뒤 로컬 스토리지 저장*/
     const dataJSON = JSON.stringify(data.data);
-    sessionStorage.setItem('searchListLocal', dataJSON);
+    secureLocalStorage.setItem('searchListLocal', dataJSON);
 
     /** searchList.jsx로 페이지 이동 */
     navigate('searchList');

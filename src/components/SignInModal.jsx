@@ -2,8 +2,9 @@ import React from 'react';
 import { Modal, Input, Form } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { userInfoCreate } from '../store/module/User';
+import secureLocalStorage from 'react-secure-storage';
 
 export default function SignInModal({ open, changeOpen }) {
   /** form 리액트 훅 */
@@ -26,7 +27,7 @@ export default function SignInModal({ open, changeOpen }) {
 
       /**객체, 배열을 JSON 문자열로 변환 한뒤 세션 스토리지에 유저 정보 저장*/
       const dataJSON = JSON.stringify(data.data);
-      window.sessionStorage.setItem('sessionUserInfo', dataJSON);
+      secureLocalStorage.setItem('sessionUserInfo', dataJSON);
     } else {
       console.log('로그인 성공 실패', data.data);
       alert(data.data);

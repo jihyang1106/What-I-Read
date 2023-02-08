@@ -4,6 +4,7 @@ import BookDetailModal from '../components/BookDetailModal';
 import { useState } from 'react';
 import { Layout, Col, Row, Button, Card } from 'antd';
 import '../css/searchList.css';
+import secureLocalStorage from 'react-secure-storage';
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -27,7 +28,7 @@ export default function SearchList() {
   /** 모달창에 보내기 위한 bookInfo */
   const [bookInfo, setBookInfo] = useState('');
   // localStorage에 저장한 값 가져와서 프론트에 뿌리기
-  const searchListStr = sessionStorage.getItem('searchListLocal');
+  const searchListStr = secureLocalStorage.getItem('searchListLocal');
   const searchListLocal = JSON.parse(searchListStr); // JSON 문자열을 객체, 배열로 변환
 
   return (
@@ -77,7 +78,8 @@ export default function SearchList() {
                       <Button
                         onClick={() => {
                           if (
-                            sessionStorage.getItem('sessionUserInfo') === null
+                            secureLocalStorage.getItem('sessionUserInfo') ===
+                            null
                           ) {
                             alert('로그인 후 이용해주세요');
                           } else {

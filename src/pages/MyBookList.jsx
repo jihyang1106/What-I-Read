@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { mybookCreate } from '../store/module/Book';
 import MyBookModal from '../components/MybookModal';
+import secureLocalStorage from 'react-secure-storage';
 import '../css/searchList.css';
 
 const { Content } = Layout;
@@ -12,11 +13,11 @@ const { Meta } = Card;
 
 const contentStyle = {
   marginTop: '60px',
-  height: '100vh'
+  height: '100vh',
 };
 
 export default function MyBookList({ openbook, openBook }) {
-  const id = JSON.parse(sessionStorage.getItem('sessionUserInfo')).id;
+  const id = JSON.parse(secureLocalStorage.getItem('sessionUserInfo')).id;
 
   const dispatch = useDispatch();
   const mybookInfo = useSelector((state) => state.Book.mybookInfo);
@@ -46,7 +47,7 @@ export default function MyBookList({ openbook, openBook }) {
 
   return (
     <>
-      <Layout style={{ backgroundColor: 'white', height: '100%'}}>
+      <Layout style={{ backgroundColor: 'white', height: '100%' }}>
         <Content style={contentStyle}>
           <Row>
             <Col span={12} offset={6}>
