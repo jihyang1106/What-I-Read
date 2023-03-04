@@ -62,7 +62,7 @@ export default function List() {
   }
   return (
     <div className="lp">
-      <div className="one" style={{ marginTop: '300px' }}>
+      <div className="one">
         <h1>{aladin}</h1>
         {classN.map((e, i) => (
           //<div ref={obj[`div${i}`]} className={`div${i}`} key={i}>

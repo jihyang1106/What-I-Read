@@ -38,7 +38,7 @@ const CommentForm = ({ BookReport_id }) => {
 
   return (
     <>
-      <Form onFinish={onSubmitComment}>
+      <Form onFinish={onSubmitComment} style={{ width: '80%' }}>
         <Form.Item style={{ position: 'relative', margin: 0 }}>
           <Input.TextArea
             rows={4}

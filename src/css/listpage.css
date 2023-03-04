@@ -1,19 +1,26 @@
 h1 {
   z-index: 3;
- color: #fff; 
- font-size: 40px;
- position: absolute;
- top: 10vh;
- left: calc(48% - 75px);
+  color: #fff;
+  font-size: 40px;
+  position: absolute;
+  top: 10vh;
+  left: calc(48% - 75px);
   animation: x2 2.5s linear infinite reverse;
 }
 @keyframes x2 {
-  0% {transform: translateY(0px);}
-  25% {transform:translateY(5px);}
-  75% {transform: translateY(-5px);}
-  100% {transform: translateY(0px);}
-}           
-
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(5px);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 
 .one {
   position: relative;
@@ -22,6 +29,7 @@ h1 {
   perspective-origin: 50% -80%;
   width: 80vw;
   margin: 0 auto;
+  top: 300px;
 }
 .one img {
   width: 150px;
@@ -40,42 +48,46 @@ h1 {
   z-index: 2;
   left: calc(58% - 75px);
   transform: translateZ(135px) rotateX(-12deg) rotateY(-360deg);
-  transition: left .5s, transform 0s !important;
+  transition: left 0.5s, transform 0s !important;
 }
 .div6 {
   z-index: 1;
   left: calc(71% - 75px);
-  transform: translateZ(75px) rotateX(-12deg) rotateY(-333deg) ;
+  transform: translateZ(75px) rotateX(-12deg) rotateY(-333deg);
 }
 .div5 {
   left: calc(74% - 75px);
-  transform: translateZ(-50px) rotateX(-12deg) rotateY(-210deg) ;
+  transform: translateZ(-50px) rotateX(-12deg) rotateY(-210deg);
   filter: brightness(0.6) blur(1px);
-}    
+}
 .div4 {
   left: calc(60% - 75px);
-  transform: translateZ(-100px) rotateX(-12deg) rotateY(-180deg) ;
+  transform: translateZ(-100px) rotateX(-12deg) rotateY(-180deg);
   filter: brightness(0.6) blur(1px);
 }
 .div3 {
   left: calc(40% - 75px);
-  transform: translateZ(-100px) rotateX(-12deg) rotateY(-180deg) ;
+  transform: translateZ(-100px) rotateX(-12deg) rotateY(-180deg);
   filter: brightness(0.6) blur(1px);
 }
 
 .div2 {
   left: calc(27% - 75px);
-  transform: translateZ(-50px) rotateX(-12deg) rotateY(-150deg) ;
+  transform: translateZ(-50px) rotateX(-12deg) rotateY(-150deg);
   filter: brightness(0.6) blur(1px);
 }
 .div1 {
   z-index: 1;
   left: calc(29% - 75px);
-  transform: translateZ(75px) rotateX(-12deg) rotateY(-29deg) ;
+  transform: translateZ(75px) rotateX(-12deg) rotateY(-29deg);
 }
 @keyframes x1 {
-  0% {transform: translateZ(100px) rotateX(-15deg) rotateY(0deg);}
-  100% {transform: translateZ(100px) rotateX(-15deg) rotateY(-360deg);}
+  0% {
+    transform: translateZ(100px) rotateX(-15deg) rotateY(0deg);
+  }
+  100% {
+    transform: translateZ(100px) rotateX(-15deg) rotateY(-360deg);
+  }
 }
 /* @keyframes x2 {
   0% {top: 0;}

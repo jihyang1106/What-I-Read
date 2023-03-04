@@ -63,6 +63,7 @@ const CommentList = ({ BookReport_id }) => {
   return (
     <div style={{ marginTop: '35px' }}>
       <List
+        style={{ width: '80%' }}
         className="demo-loadmore-list"
         //loading={initLoading}
         itemLayout="horizontal"
